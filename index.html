@@ -1467,3 +1467,67 @@ Eggs"></textarea>
     </script>
 
 </body></html>
+<!-- Firebase SDK Libraries (Real-time database ke liye) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+  // Aapka asli Firebase Configuration (Image se copied)
+  const firebaseConfig = {
+    apiKey: "AIzaSyATzhq1HdHdPv4qWgWzUvs9wsohd8uFyq4",
+    authDomain: "mission-milestone-1f55c.firebaseapp.com",
+    databaseURL: "https://mission-milestone-1f55c-default-rtdb.firebaseio.com",
+    projectId: "mission-milestone-1f55c",
+    storageBucket: "mission-milestone-1f55c.appspot.com",
+    messagingSenderId: "764940662411",
+    appId: "1:764940662411:web:115ec9e815e7b09b9dc68e",
+    measurementId: "G-X7T28R3X9G"
+  };
+
+  // Firebase initialize karein
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const ordersRef = ref(database, 'orders');
+
+  // 🛒 CUSTOMER FUNCTION: Jab koi order submit karega
+  // Note: Apne HTML ke puraane order button ke 'onclick' par placeOrder(name, drone, price) call karna hai
+  window.placeOrder = function(customerName, droneModel, price) {
+    push(ordersRef, {
+      name: customerName,
+      drone: droneModel,
+      price: price,
+      time: new Date().toLocaleTimeString(),
+      status: "Pending"
+    }).then(() => {
+      alert("Order successfully dukan dar ke paas bhej diya gaya hai!");
+    }).catch((error) => {
+      console.error("Database error:", error);
+    });
+  }
+
+  // 🏪 SHOPKEEPER FUNCTION: Jo sabhi phones mein automatic data live dikhayega
+  onValue(ordersRef, (snapshot) => {
+    const data = snapshot.val();
+    
+    // ⚠️ Apne code ke hisab se dukan dar ki div list ki ID check kar lena, agar alag ho toh "shopkeeper-orders-list" badal dena
+    const orderListDiv = document.getElementById("shopkeeper-orders-list"); 
+    
+    if (data && orderListDiv) {
+      orderListDiv.innerHTML = ""; // Purani list saaf karein
+      
+      // Saare live orders screen par bina refresh kare dikhane ke liye
+      Object.keys(data).forEach((key) => {
+        const order = data[key];
+        orderListDiv.innerHTML += `
+          <div style="border: 2px solid #4CAF50; padding: 12px; margin: 8px 0; border-radius: 8px; background-color: #f9f9f9;">
+            <p style="margin: 3px 0;"><strong>👤 Customer:</strong> ${order.name}</p>
+            <p style="margin: 3px 0;"><strong>🛸 Drone Model:</strong> ${order.drone}</p>
+            <p style="margin: 3px 0;"><strong>💰 Price:</strong> ${order.price}</p>
+            <p style="margin: 3px 0;"><strong>🕒 Time:</strong> ${order.time}</p>
+            <p style="margin: 3px 0;"><strong>🟢 Status:</strong> <span style="color: green; font-weight: bold;">${order.status}</span></p>
+          </div>
+        `;
+      });
+    }
+  });
+</script>
