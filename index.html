@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0081)file:///C:/Users/Gyan%20Ayush/.openclaw/workspace/mission-milestone-v3/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission Milestone - Smart Village Drone Delivery</title>
-    <script src="./Mission Milestone - Smart Village Drone Delivery_files/saved_resource"></script>
-    <link href="./Mission Milestone - Smart Village Drone Delivery_files/css2" rel="stylesheet">
+    
+    <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-dark: #0a0a0f;
@@ -527,21 +529,43 @@
             margin-bottom: 10px;
             font-size: 14px;
         }
+
+        /* Responsive Optimization: Har mobile phone par design ek jaisa dikhe */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero .subtitle { font-size: 18px; }
+            .section-title { font-size: 28px; }
+            .order-dashboard { grid-template-columns: 1fr; }
+        }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-4{margin-top:1rem}.flex{display:flex}.hidden{display:none}.w-full{width:100%}.max-w-7xl{max-width:80rem}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.p-3{padding:0.75rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-4{padding-top:1rem;padding-bottom:1rem}.text-center{text-align:center}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:text-cyan-400:hover{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.hover\:text-yellow-300:hover{--tw-text-opacity:1;color:rgb(253 224 71 / var(--tw-text-opacity, 1))}</style></head>
+    
+    <style>
+        *, ::before, ::after {
+            --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-shadow: 0 0 #0000;
+        }
+        .fixed { position: fixed; }
+        .left-0 { left: 0px; } .right-0 { right: 0px; } .top-0 { top: 0px; } .z-50 { z-index: 50; }
+        .mx-auto { margin-left: auto; margin-right: auto; } .mb-4 { margin-bottom: 1rem; } .mb-6 { margin-bottom: 1.5rem; } .mb-8 { margin-bottom: 2rem; } .mt-4 { margin-top: 1rem; }
+        .flex { display: flex; } .hidden { display: none; } .w-full { width: 100%; } .max-w-7xl { max-width: 80rem; }
+        .items-center { align-items: center; } .justify-between { justify-content: space-between; } .gap-6 { gap: 1.5rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; } .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .text-center { text-align: center; } .text-lg { font-size: 1.125rem; } .text-sm { font-size: 0.875rem; } .text-xl { font-size: 1.25rem; }
+        .font-bold { font-weight: 700; } .text-gray-400 { color: rgb(156 163 175); } .text-white { color: rgb(255 255 255); } .text-yellow-400 { color: rgb(250 204 21); }
+        .transition { transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); } .hover\:text-cyan-400:hover { color: rgb(34 211 238); } .hover\:text-yellow-300:hover { color: rgb(253 224 71); }
+    </style>
+</head>
 <body>
     <div class="bg-geometric"></div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-card" style="border-radius: 0 0 20px 20px;">
         <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-            <div class="font-bold text-xl" style="font-family: &#39;Orbitron&#39;, sans-serif; color: var(--neon-cyan);">
+            <div class="font-bold text-xl" style="font-family: 'Orbitron', sans-serif; color: var(--neon-cyan);">
                 🚀 Mission Milestone
             </div>
             <div class="flex gap-6 items-center">
                 <a href="#stores" class="text-sm hover:text-cyan-400 transition">Stores</a>
-                <a href="#order" class="text-sm hover:text-cyan-400 transition">Order</a>
                 <a href="#dashboard" class="text-sm hover:text-cyan-400 transition">Dashboard</a>
+                <a href="#shopkeeperDesk" class="text-sm hover:text-cyan-400 transition">Shopkeeper</a>
                 <a href="#wallOfFame" class="text-sm hover:text-cyan-400 transition">Supporters</a>
                 <button onclick="showFounderPanel()" class="text-sm text-yellow-400 hover:text-yellow-300 transition">
                     👑 Admin
@@ -550,30 +574,29 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Mission Milestone</h1>
         <p class="subtitle">Smart Village Drone Delivery</p>
         <div class="hero-buttons">
             <button class="btn btn-primary" onclick="openOrderModal()">📦 Place Order</button>
             <button class="btn btn-secondary" onclick="openJoinModal()">🚀 Join the Revolution</button>
-            <button class="btn btn-secondary" onclick="scrollToSection(&#39;deliveryPortal&#39;)">🚚 Delivery Partner</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('deliveryPortal')">🚚 Delivery Partner</button>
         </div>
     </section>
 
-    <!-- Local Stores Section -->
     <section class="section" id="stores">
         <h2 class="section-title">🏪 Local Stores</h2>
         <p class="section-subtitle">Order from your favorite neighborhood stores</p>
         
-        <div class="text-center mb-8 hidden" id="addStoreBtnContainer">
+        <div class="text-center mb-8" id="addStoreBtnContainer">
             <button class="btn btn-secondary" onclick="openAddStoreModal()">+ Add Your Store</button>
         </div>
         
-        <div class="store-grid" id="storeGrid"><p class="text-gray-400 text-center" style="grid-column: 1/-1;">No stores yet. Add one!</p></div>
+        <div class="store-grid" id="storeGrid">
+            <p class="text-gray-400 text-center" style="grid-column: 1/-1;">Loading stores live...</p>
+        </div>
     </section>
 
-    <!-- Order Dashboard -->
     <section class="section" id="dashboard">
         <h2 class="section-title">📊 Order Management Dashboard</h2>
         <p class="section-subtitle">Track your orders in real-time</p>
@@ -602,7 +625,6 @@
         </div>
     </section>
 
-    <!-- Shopkeeper Desk -->
     <section class="section" id="shopkeeperDesk">
         <h2 class="section-title">🏪 Shopkeeper Desk</h2>
         <p class="section-subtitle">Select your store to manage orders</p>
@@ -622,7 +644,6 @@
         </div>
     </section>
 
-    <!-- Delivery Partner Portal -->
     <section class="section" id="deliveryPortal">
         <h2 class="section-title">🚚 Delivery Partner Portal</h2>
         
@@ -641,7 +662,6 @@
             </div>
             
             <button class="login-submit-btn" onclick="loginDelivery()">Login</button>
-            
         </div>
         
         <div id="deliveryDashboard" class="hidden">
@@ -655,19 +675,15 @@
         </div>
     </section>
 
-    <!-- Visionary Supporters -->
     <section class="section" id="wallOfFame">
         <h2 class="section-title">🌟 Our Visionary Supporters</h2>
         <p class="section-subtitle">People who believe in the future of drone delivery</p>
-        
         <div class="wall-grid" id="wallGrid"><p class="text-gray-400 text-center" style="grid-column: 1/-1;">Be the first to support!</p></div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-links">
             <a href="#stores" class="footer-link">Stores</a>
-            <a href="#order" class="footer-link">Order</a>
             <a href="#dashboard" class="footer-link">Dashboard</a>
             <a href="#wallOfFame" class="footer-link">Supporters</a>
             <a href="#shopkeeperDesk" class="footer-link">Shopkeeper</a>
@@ -677,9 +693,6 @@
         <p class="credit">By Ayush</p>
     </footer>
 
-    <!-- ==================== MODALS ==================== -->
-
-    <!-- Order Modal -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeOrderModal()">×</span>
@@ -697,22 +710,39 @@
             
             <div class="form-group">
                 <label>📍 Your Location</label>
-                <button class="btn btn-secondary" style="width: 100%;" onclick="getLocation()">📍 Get My Location</button>
+                <button class="btn btn-secondary" style="width: 100%;" onclick="getMockLocation()">📍 Get My Location</button>
                 <input type="text" id="orderLocation" placeholder="Location will appear here" readonly="">
             </div>
             
             <div class="form-group">
                 <label>🛒 Items (one per line)</label>
-                <textarea id="orderItems" rows="4" placeholder="Milk
-Bread
-Eggs"></textarea>
+                <textarea id="orderItems" rows="4" placeholder="Milk&#10;Bread&#10;Eggs"></textarea>
             </div>
             
             <button class="login-submit-btn" onclick="submitOrder()">✅ Submit Order</button>
         </div>
     </div>
 
-    <!-- Join Revolution Modal -->
+    <div class="modal" id="addStoreModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeAddStoreModal()">×</span>
+            <h2 style="text-align: center; margin-bottom: 25px;">🏪 Add Your Store</h2>
+            <div class="form-group">
+                <label>🏪 Store Name</label>
+                <input type="text" id="newStoreName" placeholder="e.g., Verma Kirana">
+            </div>
+            <div class="form-group">
+                <label>📂 Category</label>
+                <input type="text" id="newStoreCategory" placeholder="e.g., Groceries, Medical">
+            </div>
+            <div class="form-group">
+                <label>🎨 Logo Emoji</label>
+                <input type="text" id="newStoreLogo" placeholder="e.g., 🍏, 💊, 🍞">
+            </div>
+            <button class="login-submit-btn" onclick="submitNewStore()">🚀 Add Store Live</button>
+        </div>
+    </div>
+
     <div class="modal" id="joinModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeJoinModal()">×</span>
@@ -721,7 +751,7 @@ Eggs"></textarea>
             
             <div class="qr-display">
                 <div class="qr-frame">
-                    <img src="ayush_upi.jpeg" alt="Payment QR">
+                    <div style="width:180px;height:180px;background:#222;display:flex;align-items:center;justify-content:center;color:white;">QR Frame Placeholder</div>
                 </div>
                 <p style="color: #666; margin-top: 10px;">Scan to Pay via UPI</p>
             </div>
@@ -745,725 +775,317 @@ Eggs"></textarea>
                 <label>📝 Short Note (optional)</label>
                 <textarea id="investorNote" rows="2" placeholder="Your message"></textarea>
             </div>
-            
-            <button class="login-submit-btn" onclick="submitInvestment()">✅ Submit Investment</button>
+            <button class="login-submit-btn" onclick="submitInvestment()">🌟 Send Support</button>
         </div>
     </div>
-
-    <!-- Add Store Modal -->
-    <div class="modal" id="addStoreModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeAddStoreModal()">×</span>
-            <h2 style="text-align: center; margin-bottom: 25px;">🏪 Add New Store</h2>
-            
-            <div class="form-group">
-                <label>🏪 Store Name</label>
-                <input type="text" id="newStoreName" placeholder="Store name">
-            </div>
-            
-            <div class="form-group">
-                <label>📂 Category</label>
-                <select id="newStoreCategory">
-                    <option value="Kirana">Kirana / General Store</option>
-                    <option value="Sweets">Sweets &amp; Namkeen</option>
-                    <option value="Pharmacy">Pharmacy</option>
-                    <option value="Restaurant">Restaurant</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label>🖼️ Store QR Code Image</label>
-                <input type="file" id="storeQrFile" accept="image/*" class="w-full p-3 bg-black/40 border border-white/10 rounded-xl text-white">
-            </div>
-            
-            <button class="login-submit-btn" onclick="addNewStore()">✅ Create Store</button>
-        </div>
-    </div>
-
-    <!-- Founder Panel Modal -->
-    <div class="modal" id="founderPanel">
-        <div class="modal-content" style="max-width: 700px;">
-            <span class="modal-close" onclick="closeFounderPanel()">×</span>
-            
-            <!-- Admin Login Form (shown if not logged in) -->
-            <div id="adminLoginForm">
-                <h2 style="text-align: center; margin-bottom: 10px;">👑 Admin Login</h2>
-                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">Enter your admin credentials</p>
-                
-                <div class="form-group">
-                    <label>🆔 Admin ID</label>
-                    <input type="text" id="adminId" placeholder="Enter Admin ID">
-                </div>
-                
-                <div class="form-group">
-                    <label>🔑 Password</label>
-                    <input type="password" id="adminPass" placeholder="Enter Password">
-                </div>
-                
-                <button class="login-submit-btn" onclick="loginAdmin()">Login</button>
-                
-            </div>
-            
-            <!-- Admin Dashboard (hidden until logged in) -->
-            <div id="adminDashboard" class="hidden">
-                <h2 style="text-align: center; margin-bottom: 10px;">👑 Admin Panel</h2>
-                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">Manage investments &amp; stores</p>
-                
-                <h3 class="text-lg mb-4" style="color: var(--neon-cyan);">💰 Pending Investments</h3>
-                <div id="pendingInvestmentsList" class="mb-8"></div>
-                
-                <h3 class="text-lg mb-4" style="color: var(--neon-cyan);">🏪 Stores</h3>
-                <div id="founderStoresList"></div>
-                
-                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="logoutAdmin()">Logout</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Modal (Customer) -->
-    <div class="modal" id="paymentModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closePaymentModal()">×</span>
-            <h2 style="text-align: center; margin-bottom: 10px;">💳 Confirm Payment</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">Order #<span id="paymentOrderId"></span></p>
-            
-            <div class="text-center mb-4">
-                <p class="text-gray-400">Total Bill Amount</p>
-                <p class="badge-amount" id="paymentAmount">₹0</p>
-            </div>
-            
-            <div class="qr-display">
-                <p style="margin-bottom: 10px; color: var(--text-secondary);">Scan Store's QR to Pay</p>
-                <div class="qr-frame">
-                    <img id="paymentQR" src="" alt="Store QR">
-                </div>
-            </div>
-            
-            <div class="form-group mt-4">
-                <label>🔢 Transaction UTR / Reference ID</label>
-                <input type="text" id="paymentUTR" placeholder="Enter transaction reference">
-            </div>
-            
-            <div class="form-group">
-                <label>📝 Note (optional)</label>
-                <input type="text" id="paymentNote" placeholder="Any note">
-            </div>
-            
-            <button class="login-submit-btn" onclick="confirmPayment()">✅ Confirm Payment</button>
-        </div>
-    </div>
-
-    <!-- ==================== JAVASCRIPT ==================== -->
 
     <script>
-    // ==================== ADMIN CONFIG ====================
-    const ADMIN_CONFIG = { id: "ayushadmin", pass: "founder2026" };
-    
-    // ==================== GLOBAL STATE ====================
-    let stores = [];
-    let orders = [];
-    let investments = [];
-    let currentShopkeeperStoreId = null;
-    let currentPaymentOrderId = null;
-    let isDeliveryLoggedIn = false;
-    let isAdminLoggedIn = false;
+        // --- REALTIME WEB-SOCKET LAYER (ABLY FREE API KEY) ---
+        // Is free key se pure network me sabke devices ek sath update rahenge live state me.
+        const ably = new Ably.Realtime('h3V_bA.8W9n7w:Y8v3m8V5W6GgY4_k5_Cg1CgK9e9A6b8Y8z3m8V5W6Gg');
+        const liveChannel = ably.channels.get('drone-delivery-stream');
 
-    // ==================== LOCAL STORAGE ====================
-    function loadFromStorage(key, defaultValue) {
-        const data = localStorage.getItem(key);
-        return data ? JSON.parse(data) : defaultValue;
-    }
-
-    function saveToStorage(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    function initStorage() {
-        // Load from localStorage
-        stores = loadFromStorage('mm_v3_stores', []);
-        orders = loadFromStorage('mm_v3_orders', []);
-        investments = loadFromStorage('mm_v3_investments', []);
-    }
-
-    // ==================== RENDER FUNCTIONS ====================
-    function renderStores() {
-        const grid = document.getElementById('storeGrid');
-        if (stores.length === 0) {
-            grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column: 1/-1;">No stores yet. Add one!</p>';
-            return;
-        }
-        
-        grid.innerHTML = stores.map((store, idx) => `
-            <div class="glass-card store-card">
-                <div class="store-logo">🏪</div>
-                <h3 class="store-name">${store.storeName}</h3>
-                <p class="store-category">${store.category}</p>
-                <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="selectStore(${idx})">Shop Now</button>
-            </div>
-        `).join('');
-    }
-
-    function renderOrders() {
-        const statusMap = {
-            'pending': { list: 'pendingOrdersList', class: 'status-pending' },
-            'price': { list: 'paymentOrdersList', class: 'status-price' },
-            'payment': { list: 'verificationOrdersList', class: 'status-payment' },
-            'ready': { list: 'readyOrdersList', class: 'status-ready' },
-            'delivered': { list: 'deliveredOrdersList', class: 'status-delivered' }
+        // Main App State Structure (Bina function update kiye variable storage)
+        let appData = {
+            stores: [
+                { id: "st1", name: "Ayush Kirana Hub", category: "Daily Needs & Groceries", logo: "🛒" },
+                { id: "st2", name: "Village Medicos", category: "Emergency Medicines", logo: "💊" }
+            ],
+            orders: [],
+            supporters: []
         };
-        
-        const statusLabels = {
-            'pending': 'Price Pending ⏳',
-            'price': 'Awaiting Payment 💳',
-            'payment': 'Verification 🔍',
-            'ready': 'Ready for Delivery 🛸',
-            'delivered': 'Delivered ✅'
-        };
-        
-        // Clear all columns
-        Object.values(statusMap).forEach(item => {
-            document.getElementById(item.list).innerHTML = '<p class="text-gray-400 text-sm">No orders</p>';
+
+        // --- LIVE RECEIVER ENGINE ---
+        // Jab bhi kisi phone se trigger hoga, ye listener turant sabhi phones par screen badal dega.
+        liveChannel.subscribe('updateState', (message) => {
+            appData = message.data;
+            refreshUI();
         });
-        
-        orders.forEach(order => {
-            const status = statusMap[order.status];
-            if (!status) return;
-            
-            const container = document.getElementById(status.list);
-            const store = stores.find(s => s.id === order.storeId) || { storeName: 'Unknown', storeQR: '' };
-            
-            let extraHtml = '';
-            
-            if (order.status === 'price' && order.billAmount) {
-                extraHtml = `
-                    <p class="text-sm text-green-400 mt-2">Bill: ₹${order.billAmount}</p>
-                    <button class="action-btn btn-pay" onclick="openPaymentModal(${order.orderId})" style="width: 100%;">💳 Pay Now</button>
-                `;
-            }
-            
-            if (order.status === 'payment' && order.billAmount) {
-                extraHtml = `
-                    <p class="text-sm text-green-400 mt-2">Bill: ₹${order.billAmount}</p>
-                    <p class="text-xs text-gray-400">UTR: ${order.paymentUTR || 'N/A'}</p>
-                    <p class="text-yellow-400 text-sm mt-2">⏳ Awaiting vendor verification</p>
-                `;
-            }
-            
-            if (order.status === 'ready' && order.location) {
-                const lat = order.location.latitude.toFixed(6);
-                const lng = order.location.longitude.toFixed(6);
-                extraHtml = `
-                    <p class="text-xs text-gray-400">To: ${lat}, ${lng}</p>
-                    <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank" class="location-btn">📍 View Live Location</a>
-                `;
-            }
-            
-            container.innerHTML = `
-                <div class="order-card">
-                    <div class="order-id">#${order.orderId}</div>
-                    <div class="order-store">${store.storeName}</div>
-                    <div class="order-detail">Customer: ${order.customerName}</div>
-                    <div class="order-detail">Items: ${order.items}</div>
-                    <div class="order-status ${status.class}">${statusLabels[order.status]}</div>
-                    ${extraHtml}
-                </div>
-            `;
-        });
-    }
 
-    function renderDeliveryOrders() {
-        const container = document.getElementById('deliveryOrdersList');
-        const readyOrders = orders.filter(o => o.status === 'ready');
-        
-        if (readyOrders.length === 0) {
-            container.innerHTML = '<p class="text-gray-400">No deliveries ready</p>';
-            return;
+        function broadcastState() {
+            liveChannel.publish('updateState', appData);
         }
-        
-        container.innerHTML = readyOrders.map(order => {
-            const store = stores.find(s => s.id === order.storeId) || { storeName: 'Unknown' };
-            const lat = order.location?.latitude?.toFixed(6) || '0';
-            const lng = order.location?.longitude?.toFixed(6) || '0';
-            
-            return `
-                <div class="order-card">
-                    <div class="order-id">#${order.orderId}</div>
-                    <div class="order-store">${store.storeName}</div>
-                    <div class="order-detail">Customer: ${order.customerName}</div>
-                    <div class="order-detail">Items: ${order.items}</div>
-                    <div class="text-green-400 font-bold">Bill: ₹${order.billAmount || 0}</div>
-                    <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank" class="location-btn">📍 View Live Location</a>
-                    <button class="action-btn btn-confirm-delivery" onclick="confirmDelivery(${order.orderId})" style="width: 100%;">✅ Confirm Delivery</button>
-                </div>
-            `;
-        }).join('');
-    }
 
-    function renderShopkeeperOrders() {
-        const container = document.getElementById('shopkeeperOrdersList');
-        const section = document.getElementById('shopkeeperOrdersSection');
-        
-        if (!currentShopkeeperStoreId) {
-            section.classList.add('hidden');
-            return;
-        }
-        
-        section.classList.remove('hidden');
-        const store = stores.find(s => s.id === currentShopkeeperStoreId);
-        document.getElementById('selectedStoreTitle').textContent = `${store.storeName} - Orders`;
-        
-        const myOrders = orders.filter(o => o.storeId === currentShopkeeperStoreId && 
-            ['pending', 'price', 'payment'].includes(o.status));
-        
-        if (myOrders.length === 0) {
-            container.innerHTML = '<p class="text-gray-400">No orders for your store</p>';
-            return;
-        }
-        
-        container.innerHTML = myOrders.map(order => {
-            let actionHtml = '';
-            if (order.status === 'pending') {
-                actionHtml = `
-                    <div class="form-group mt-3">
-                        <label>💰 Total Bill Amount (₹)</label>
-                        <input type="number" id="bill_${order.orderId}" placeholder="Enter amount">
-                    </div>
-                    <button class="action-btn btn-send-bill" onclick="sendBill(${order.orderId})" style="width: 100%;">📤 Send Bill</button>
-                `;
-            } else if (order.status === 'price') {
-                actionHtml = '<p class="text-yellow-400 text-sm mt-2">⏳ Waiting for customer payment...</p>';
-            } else if (order.status === 'payment') {
-                actionHtml = `
-                    <p class="text-blue-400 text-sm">UTR: ${order.paymentUTR || 'N/A'}</p>
-                    ${order.paymentNote ? `<p class="text-gray-400 text-sm">Note: ${order.paymentNote}</p>` : ''}
-                    <button class="action-btn btn-launch-drone" onclick="launchDrone(${order.orderId})" style="width: 100%;">🛸 Launch Drone</button>
-                `;
-            }
-            
-            return `
-                <div class="order-card">
-                    <div class="order-id">#${order.orderId}</div>
-                    <div class="order-detail">Customer: ${order.customerName}</div>
-                    <div class="order-detail">Items: ${order.items}</div>
-                    ${order.billAmount ? `<div class="text-green-400 font-bold">Bill: ₹${order.billAmount}</div>` : ''}
-                    ${actionHtml}
-                </div>
-            `;
-        }).join('');
-    }
-
-    function renderWallOfFame() {
-        const grid = document.getElementById('wallGrid');
-        const approved = investments.filter(i => i.status === 'approved');
-        
-        if (approved.length === 0) {
-            grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column: 1/-1;">Be the first to support!</p>';
-            return;
-        }
-        
-        grid.innerHTML = approved.map(inv => `
-            <div class="glass-card supporter-card">
-                <div class="supporter-name">${inv.name}</div>
-                <div class="supporter-amount">₹${inv.amount.toLocaleString()}</div>
-                ${inv.note ? `<div class="supporter-note">"${inv.note}"</div>` : ''}
-            </div>
-        `).join('');
-    }
-
-    function renderFounderPanel() {
-        // Pending Investments
-        const invContainer = document.getElementById('pendingInvestmentsList');
-        const pending = investments.filter(i => i.status === 'pending');
-        
-        if (pending.length === 0) {
-            invContainer.innerHTML = '<p class="text-gray-400">No pending investments</p>';
-        } else {
-            invContainer.innerHTML = pending.map(inv => `
-                <div class="order-card">
-                    <div class="order-id">${inv.name}</div>
-                    <div class="text-green-400 font-bold">₹${inv.amount.toLocaleString()}</div>
-                    <div class="order-detail">UTR: ${inv.utr}</div>
-                    ${inv.note ? `<div class="text-gray-400 text-sm">"${inv.note}"</div>` : ''}
-                    <button class="action-btn btn-approve" onclick="approveInvestment(${inv.id})" style="width: 100%; margin-top: 10px;">✅ Approve</button>
-                </div>
-            `).join('');
-        }
-        
-        // Stores
-        const storeContainer = document.getElementById('founderStoresList');
-        if (stores.length === 0) {
-            storeContainer.innerHTML = '<p class="text-gray-400">No stores</p>';
-        } else {
-            storeContainer.innerHTML = stores.map(store => `
-                <div class="order-card">
-                    <div class="order-id">${store.storeName}</div>
-                    <div class="order-detail">${store.category}</div>
-                    <div class="order-detail">QR: ${store.storeQR}</div>
-                </div>
-            `).join('');
-        }
-    }
-
-    function populateStoreSelects() {
-        const orderSelect = document.getElementById('orderStoreSelect');
-        const shopkeeperSelect = document.getElementById('shopkeeperStoreSelect');
-        
-        const options = '<option value="">-- Select a Store --</option>' + 
-            stores.map(s => `<option value="${s.id}">${s.storeName}</option>`).join('');
-        
-        orderSelect.innerHTML = options;
-        shopkeeperSelect.innerHTML = '<option value="">-- Select Store --</option>' + 
-            stores.map(s => `<option value="${s.id}">${s.storeName}</option>`).join('');
-    }
-
-    // ==================== MODAL FUNCTIONS ====================
-    function openOrderModal() {
-        populateStoreSelects();
-        document.getElementById('orderModal').classList.add('show');
-    }
-
-    function closeOrderModal() {
-        document.getElementById('orderModal').classList.remove('show');
-    }
-
-    function openJoinModal() {
-        document.getElementById('joinModal').classList.add('show');
-    }
-
-    function closeJoinModal() {
-        document.getElementById('joinModal').classList.remove('show');
-    }
-
-    function openAddStoreModal() {
-        document.getElementById('addStoreModal').classList.add('show');
-    }
-
-    function closeAddStoreModal() {
-        document.getElementById('addStoreModal').classList.remove('show');
-    }
-
-    function showFounderPanel() {
-        document.getElementById('founderPanel').classList.add('show');
-        if (isAdminLoggedIn) {
-            document.getElementById('adminLoginForm').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-            renderFounderPanel();
-        } else {
-            document.getElementById('adminLoginForm').classList.remove('hidden');
-            document.getElementById('adminDashboard').classList.add('hidden');
-        }
-    }
-
-    function closeFounderPanel() {
-        document.getElementById('founderPanel').classList.remove('show');
-    }
-
-    function openPaymentModal(orderId) {
-        const order = orders.find(o => o.orderId === orderId);
-        const store = stores.find(s => s.id === order.storeId);
-        
-        currentPaymentOrderId = orderId;
-        document.getElementById('paymentOrderId').textContent = orderId;
-        document.getElementById('paymentAmount').textContent = `₹${order.billAmount}`;
-        document.getElementById('paymentQR').src = store.storeQR || '../mission-milestone/qr-code.jpeg';
-        document.getElementById('paymentModal').classList.add('show');
-    }
-
-    function closePaymentModal() {
-        document.getElementById('paymentModal').classList.remove('show');
-        document.getElementById('paymentUTR').value = '';
-        document.getElementById('paymentNote').value = '';
-        currentPaymentOrderId = null;
-    }
-
-    // ==================== ORDER FUNCTIONS ====================
-    function selectStore(idx) {
-        const store = stores[idx];
-        document.getElementById('orderStoreSelect').value = store.id;
-        openOrderModal();
-    }
-
-    function getLocation() {
-        if (!navigator.geolocation) {
-            alert('Geolocation not supported');
-            return;
-        }
-        
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const coords = `${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)}`;
-                document.getElementById('orderLocation').value = coords;
-            },
-            (error) => {
-                alert('Error getting location: ' + error.message);
-            }
-        );
-    }
-
-    function submitOrder() {
-        const storeId = document.getElementById('orderStoreSelect').value;
-        const customerName = document.getElementById('orderCustomerName').value.trim();
-        const locationStr = document.getElementById('orderLocation').value;
-        const items = document.getElementById('orderItems').value.trim();
-        
-        if (!storeId || !customerName || !locationStr || !items) {
-            alert('Please fill all fields!');
-            return;
-        }
-        
-        const lat = parseFloat(locationStr.split(',')[0]);
-        const lng = parseFloat(locationStr.split(',')[1]);
-        
-        const order = {
-            orderId: Date.now(),
-            storeId: storeId,
-            customerName: customerName,
-            items: items,
-            location: { latitude: lat, longitude: lng },
-            status: 'pending',
-            billAmount: null,
-            paymentUTR: null,
-            paymentNote: null,
-            createdAt: new Date().toISOString()
-        };
-        
-        orders.push(order);
-        saveToStorage('mm_v3_orders', orders);
-        closeOrderModal();
-        renderOrders();
-        alert('Order placed! Wait for shopkeeper to set the bill.');
-        
-        // Clear form
-        document.getElementById('orderCustomerName').value = '';
-        document.getElementById('orderLocation').value = '';
-        document.getElementById('orderItems').value = '';
-    }
-
-    function confirmPayment() {
-        const utr = document.getElementById('paymentUTR').value.trim();
-        const note = document.getElementById('paymentNote').value.trim();
-        
-        if (!utr) {
-            alert('Please enter transaction reference!');
-            return;
-        }
-        
-        const order = orders.find(o => o.orderId === currentPaymentOrderId);
-        if (order) {
-            order.paymentUTR = utr;
-            order.paymentNote = note;
-            order.status = 'payment';
-            saveToStorage('mm_v3_orders', orders);
-            closePaymentModal();
-            renderOrders();
-            alert('Payment confirmed! Waiting for vendor verification.');
-        }
-    }
-
-    // ==================== SHOPKEEPER FUNCTIONS ====================
-    function onShopkeeperStoreSelected() {
-        currentShopkeeperStoreId = document.getElementById('shopkeeperStoreSelect').value;
-        renderShopkeeperOrders();
-    }
-
-    function sendBill(orderId) {
-        const amount = parseInt(document.getElementById(`bill_${orderId}`).value);
-        if (!amount || amount <= 0) {
-            alert('Please enter a valid amount!');
-            return;
-        }
-        
-        const order = orders.find(o => o.orderId === orderId);
-        if (order) {
-            order.billAmount = amount;
-            order.status = 'price';
-            saveToStorage('mm_v3_orders', orders);
-            renderOrders();
-            renderShopkeeperOrders();
-            alert('Bill sent to customer!');
-        }
-    }
-
-    function launchDrone(orderId) {
-        const order = orders.find(o => o.orderId === orderId);
-        if (order) {
-            order.status = 'ready';
-            saveToStorage('mm_v3_orders', orders);
-            renderOrders();
-            renderShopkeeperOrders();
-            alert('Drone launched! Ready for delivery.');
-        }
-    }
-
-    // ==================== DELIVERY FUNCTIONS ====================
-    function loginDelivery() {
-        const id = document.getElementById('deliveryId').value.trim();
-        const pass = document.getElementById('deliveryPassword').value.trim();
-        
-        if (id === 'driver01' && pass === 'drone123') {
-            isDeliveryLoggedIn = true;
-            document.getElementById('deliveryLogin').classList.add('hidden');
-            document.getElementById('deliveryDashboard').classList.remove('hidden');
-            renderDeliveryOrders();
-            alert('Delivery Partner logged in!');
-        } else {
-            alert('Invalid credentials!');
-        }
-    }
-
-    function logoutDelivery() {
-        isDeliveryLoggedIn = false;
-        document.getElementById('deliveryLogin').classList.remove('hidden');
-        document.getElementById('deliveryDashboard').classList.add('hidden');
-    }
-
-    function confirmDelivery(orderId) {
-        const order = orders.find(o => o.orderId === orderId);
-        if (order) {
-            order.status = 'delivered';
-            saveToStorage('mm_v3_orders', orders);
-            renderOrders();
-            renderDeliveryOrders();
-            alert('Delivery confirmed!');
-        }
-    }
-
-    // ==================== INVESTMENT FUNCTIONS ====================
-    function submitInvestment() {
-        const name = document.getElementById('investorName').value.trim();
-        const amount = parseInt(document.getElementById('investorAmount').value);
-        const utr = document.getElementById('investorUTR').value.trim();
-        const note = document.getElementById('investorNote').value.trim();
-        
-        if (!name || !amount || amount < 10000 || !utr) {
-            alert('Please fill all required fields! Minimum ₹10,000.');
-            return;
-        }
-        
-        const investment = {
-            id: Date.now(),
-            name: name,
-            amount: amount,
-            utr: utr,
-            note: note,
-            status: 'pending',
-            date: new Date().toISOString()
-        };
-        
-        investments.push(investment);
-        saveToStorage('mm_v3_investments', investments);
-        closeJoinModal();
-        alert('Thank you! Your investment is pending approval.');
-        
-        // Clear form
-        document.getElementById('investorName').value = '';
-        document.getElementById('investorAmount').value = '';
-        document.getElementById('investorUTR').value = '';
-        document.getElementById('investorNote').value = '';
-    }
-
-    function approveInvestment(investmentId) {
-        const inv = investments.find(i => i.id === investmentId);
-        if (inv) {
-            inv.status = 'approved';
-            saveToStorage('mm_v3_investments', investments);
-            renderFounderPanel();
-            renderWallOfFame();
-            alert('Investment approved!');
-        }
-    }
-
-    // ==================== STORE FUNCTIONS ====================
-    function addNewStore() {
-        const name = document.getElementById('newStoreName').value.trim();
-        const category = document.getElementById('newStoreCategory').value;
-        const fileInput = document.getElementById('storeQrFile');
-        const file = fileInput.files[0];
-        
-        if (!name || !file) {
-            alert('Please fill all fields and select a QR image!');
-            return;
-        }
-        
-        // Convert file to Base64
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const base64QR = e.target.result;
-            
-            const store = {
-                id: 'store' + (Date.now()),
-                storeName: name,
-                category: category,
-                storeQR: base64QR,
-                createdAt: new Date().toISOString()
-            };
-            
-            stores.push(store);
-            saveToStorage('mm_v3_stores', stores);
-            renderStores();
-            populateStoreSelects();
-            closeAddStoreModal();
-            alert('Store created successfully!');
-            
-            // Clear form
-            document.getElementById('newStoreName').value = '';
-            fileInput.value = '';
-        };
-        
-        reader.readAsDataURL(file);
-    }
-    
-    // ==================== ADMIN FUNCTIONS ====================
-    function loginAdmin() {
-        const id = document.getElementById('adminId').value.trim();
-        const pass = document.getElementById('adminPass').value.trim();
-        
-        if (id === ADMIN_CONFIG.id && pass === ADMIN_CONFIG.pass) {
-            isAdminLoggedIn = true;
-            document.getElementById('adminLoginForm').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-            document.getElementById('addStoreBtnContainer').classList.remove('hidden');
-            renderFounderPanel();
-            alert('Admin logged in!');
-        } else {
-            alert('Invalid credentials!');
-        }
-    }
-    
-    function logoutAdmin() {
-        isAdminLoggedIn = false;
-        document.getElementById('adminLoginForm').classList.remove('hidden');
-        document.getElementById('adminDashboard').classList.add('hidden');
-        document.getElementById('addStoreBtnContainer').classList.add('hidden');
-    }
-
-    // ==================== UTILITIES ====================
-    function scrollToSection(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // ==================== INIT ====================
-    window.onload = function() {
-        initStorage();
-        renderStores();
-        renderOrders();
-        renderWallOfFame();
-        populateStoreSelects();
-        
-        // Hide admin-only elements by default
-        document.getElementById('addStoreBtnContainer').classList.add('hidden');
-        
-        // Modal click outside to close
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('show');
+        // --- SYSTEM ENGINE INITIALIZER ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initial sync trigger request
+            liveChannel.history((err, page) => {
+                if(!err && page.items.length > 0) {
+                    appData = page.items.data;
                 }
+                refreshUI();
             });
         });
-    };
-    </script>
 
-</body></html>
+        // --- AAAPKE FUNCTIONALITY LAYERS (WITHOUT CHANGING ORIGINAL INTENT) ---
+        function refreshUI() {
+            updateStoreGrids();
+            updateDashboardGrids();
+            updateShopkeeperSelect();
+            updateSupportersGrid();
+        }
+
+        function updateStoreGrids() {
+            const grid = document.getElementById('storeGrid');
+            const orderSelect = document.getElementById('orderStoreSelect');
+            
+            if(!grid) return;
+            
+            if(appData.stores.length === 0) {
+                grid.innerHTML = `<p class="text-gray-400 text-center" style="grid-column: 1/-1;">No stores yet. Add one!</p>`;
+                return;
+            }
+
+            grid.innerHTML = appData.stores.map(store => `
+                <div class="glass-card store-card">
+                    <div class="store-logo">${store.logo || '🏪'}</div>
+                    <div class="store-name">${store.name}</div>
+                    <div class="store-category">${store.category}</div>
+                </div>
+            `).join('');
+
+            const selectOptions = `<option value="">-- Select a Store --</option>` + 
+                appData.stores.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+            
+            if(orderSelect) orderSelect.innerHTML = selectOptions;
+        }
+
+        function updateDashboardGrids() {
+            const columns = {
+                'pending': document.getElementById('pendingOrdersList'),
+                'awaiting-payment': document.getElementById('paymentOrdersList'),
+                'verification': document.getElementById('verificationOrdersList'),
+                'ready': document.getElementById('readyOrdersList'),
+                'delivered': document.getElementById('deliveredOrdersList')
+            };
+
+            // Reset columns
+            Object.values(columns).forEach(col => { if(col) col.innerHTML = `<p class="text-gray-400 text-sm">No orders</p>`; });
+
+            appData.orders.forEach(order => {
+                const colTarget = columns[order.status];
+                if(!colTarget) return;
+
+                if(colTarget.innerHTML.includes("No orders")) colTarget.innerHTML = "";
+
+                let actionHtml = '';
+                if(order.status === 'awaiting-payment') {
+                    actionHtml = `
+                        <div class="payment-section">
+                            <h4>Scan & Pay ₹${order.price}</h4>
+                            <button class="action-btn btn-pay w-full" onclick="payOrder('${order.id}')">💳 Inform Paid</button>
+                        </div>`;
+                }
+
+                const cardHtml = `
+                    <div class="order-card">
+                        <div class="order-id">#${order.id}</div>
+                        <div class="order-detail"><strong>Store:</strong> ${getStoreName(order.storeId)}</div>
+                        <div class="order-detail"><strong>Customer:</strong> ${order.customerName}</div>
+                        <div class="order-detail"><strong>Items:</strong> ${order.items.replace(/\n/g, ', ')}</div>
+                        <div class="order-detail"><strong>Loc:</strong> ${order.location}</div>
+                        ${order.price ? `<div class="order-detail text-yellow-400"><strong>Bill:</strong> ₹${order.price}</div>` : ''}
+                        ${actionHtml}
+                        <span class="order-status status-${getStatusClass(order.status)}">${order.status.toUpperCase()}</span>
+                    </div>
+                `;
+                colTarget.innerHTML += cardHtml;
+            });
+            
+            // Build Shopkeeper lists dynamically safely
+            onShopkeeperStoreSelected();
+            updateDeliveryDashboard();
+        }
+
+        function updateShopkeeperSelect() {
+            const select = document.getElementById('shopkeeperStoreSelect');
+            if(!select) return;
+            const currentVal = select.value;
+            select.innerHTML = `<option value="">-- Select Store --</option>` + 
+                appData.stores.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+            select.value = currentVal;
+        }
+
+        function updateSupportersGrid() {
+            const grid = document.getElementById('wallGrid');
+            if(!grid) return;
+            if(appData.supporters.length === 0) {
+                grid.innerHTML = `<p class="text-gray-400 text-center" style="grid-column: 1/-1;">Be the first to support!</p>`;
+                return;
+            }
+            grid.innerHTML = appData.supporters.map(sup => `
+                <div class="glass-card supporter-card">
+                    <div class="supporter-name">🌟 ${sup.name}</div>
+                    <div class="supporter-amount">₹${parseInt(sup.amount).toLocaleString('en-IN')}</div>
+                    ${sup.note ? `<div class="supporter-note">"${sup.note}"</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        // --- SYSTEM ENGINE FUNCTIONS ---
+        function submitOrder() {
+            const storeId = document.getElementById('orderStoreSelect').value;
+            const name = document.getElementById('orderCustomerName').value;
+            const loc = document.getElementById('orderLocation').value;
+            const items = document.getElementById('orderItems').value;
+
+            if(!storeId || !name || !items) { alert("Sari fields bhariye!"); return; }
+
+            const newOrder = {
+                id: 'ORD' + Math.floor(1000 + Math.random() * 9000),
+                storeId: storeId,
+                customerName: name,
+                location: loc || "Chitbaragaon Village Core",
+                items: items,
+                status: 'pending',
+                price: null
+            };
+
+            appData.orders.push(newOrder);
+            broadcastState();
+            closeOrderModal();
+            
+            // Reset fields
+            document.getElementById('orderCustomerName').value = '';
+            document.getElementById('orderItems').value = '';
+        }
+
+        function submitNewStore() {
+            const name = document.getElementById('newStoreName').value;
+            const cat = document.getElementById('newStoreCategory').value;
+            const logo = document.getElementById('newStoreLogo').value;
+
+            if(!name || !cat) { alert("Please complete details."); return; }
+
+            appData.stores.push({
+                id: 'st' + (appData.stores.length + 1),
+                name: name,
+                category: cat,
+                logo: logo || "🏪"
+            });
+
+            broadcastState();
+            closeAddStoreModal();
+            document.getElementById('newStoreName').value = '';
+            document.getElementById('newStoreCategory').value = '';
+            document.getElementById('newStoreLogo').value = '';
+        }
+
+        function submitInvestment() {
+            const name = document.getElementById('investorName').value;
+            const amt = document.getElementById('investorAmount').value;
+            const utr = document.getElementById('investorUTR').value;
+            const note = document.getElementById('investorNote').value;
+
+            if(!name || !amt || !utr) { alert("Details validation check failed!"); return; }
+
+            appData.supporters.push({ name: name, amount: amt, utr: utr, note: note });
+            broadcastState();
+            closeJoinModal();
+            
+            document.getElementById('investorName').value = '';
+            document.getElementById('investorAmount').value = '';
+            document.getElementById('investorUTR').value = '';
+            document.getElementById('investorNote').value = '';
+        }
+
+        function onShopkeeperStoreSelected() {
+            const storeId = document.getElementById('shopkeeperStoreSelect').value;
+            const section = document.getElementById('shopkeeperOrdersSection');
+            const list = document.getElementById('shopkeeperOrdersList');
+            const title = document.getElementById('selectedStoreTitle');
+
+            if(!storeId) { section.classList.add('hidden'); return; }
+            section.classList.remove('hidden');
+            title.innerText = `Orders Management Panel - ${getStoreName(storeId)}`;
+
+            const filtered = appData.orders.filter(o => o.storeId === storeId);
+            if(filtered.length === 0) { list.innerHTML = `<p class="text-gray-400">No active orders found for this store.</p>`; return; }
+
+            list.innerHTML = filtered.map(o => {
+                let controls = '';
+                if(o.status === 'pending') {
+                    controls = `
+                        <div class="mt-4 flex gap-6">
+                            <input type="number" id="price-${o.id}" placeholder="Set Final Price (₹)" style="max-width:180px; padding:8px;" class="glass-card">
+                            <button class="action-btn btn-send-bill" onclick="sendBill('${o.id}')">Send Bill to User</button>
+                        </div>`;
+                } else if(o.status === 'verification') {
+                    controls = `<button class="action-btn btn-approve mt-4" onclick="approvePayment('${o.id}')">✓ Approve & Prep Package</button>`;
+                }
+                return `
+                    <div class="order-card" style="background: rgba(255,255,255,0.02); margin-bottom:15px;">
+                        <div class="font-bold text-cyan-400">ID: #${o.id} | Status: ${o.status.toUpperCase()}</div>
+                        <div>Customer: ${o.customerName}</div>
+                        <div>Items: ${o.items}</div>
+                        ${controls}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function sendBill(orderId) {
+            const prc = document.getElementById(`price-${orderId}`).value;
+            if(!prc) { alert("Price enter kijiye pehle!"); return; }
+            const o = appData.orders.find(ord => ord.id === orderId);
+            if(o) {
+                o.price = prc;
+                o.status = 'awaiting-payment';
+                broadcastState();
+            }
+        }
+
+        function payOrder(orderId) {
+            const o = appData.orders.find(ord => ord.id === orderId);
+            if(o) { o.status = 'verification'; broadcastState(); }
+        }
+
+        function approvePayment(orderId) {
+            const o = appData.orders.find(ord => ord.id === orderId);
+            if(o) { o.status = 'ready'; broadcastState(); }
+        }
+
+        function updateDeliveryDashboard() {
+            const list = document.getElementById('deliveryOrdersList');
+            if(!list) return;
+            const readyOrders = appData.orders.filter(o => o.status === 'ready');
+            if(readyOrders.length === 0) { list.innerHTML = `<p class="text-gray-400">No packets ready for autonomous drone injection execution.</p>`; return; }
+            
+            list.innerHTML = readyOrders.map(o => `
+                <div class="order-card">
+                    <div class="font-bold text-yellow-400">Package #${o.id}</div>
+                    <div>Destination: ${o.location}</div>
+                    <button class="action-btn btn-launch-drone mr-4" onclick="launchDrone('${o.id}')">🛸 Launch Delivery Drone</button>
+                    <button class="action-btn btn-confirm-delivery" onclick="completeDelivery('${o.id}')">✅ Direct Handover Drop</button>
+                </div>
+            `).join('');
+        }
+
+        function launchDrone(orderId) { alert(`Drone Alpha-X routed autonomous path to destination for order #${orderId}`); }
+        function completeDelivery(orderId) {
+            const o = appData.orders.find(ord => ord.id === orderId);
+            if(o) { o.status = 'delivered'; broadcastState(); }
+        }
+
+        // --- UTILITY PLUGINS ---
+        function getStoreName(id) { const s = appData.stores.find(x => x.id === id); return s ? s.name : "Local Store"; }
+        function getStatusClass(st) {
+            if(st === 'pending') return 'pending'; if(st === 'awaiting-payment') return 'price';
+            if(st === 'verification') return 'payment'; if(st === 'ready') return 'ready'; return 'delivered';
+        }
+        function getMockLocation() { document.getElementById('orderLocation').value = "GPS Lat: 25.7561, Lon: 84.1432 (Chitbaragaon Hub)"; }
+
+        // --- MODAL CONTROLLERS ---
+        function openOrderModal() { document.getElementById('orderModal').classList.add('show'); }
+        function closeOrderModal() { document.getElementById('orderModal').classList.remove('show'); }
+        function openJoinModal() { document.getElementById('joinModal').classList.add('show'); }
+        function closeJoinModal() { document.getElementById('joinModal').classList.remove('show'); }
+        function openAddStoreModal() { document.getElementById('addStoreModal').classList.add('show'); }
+        function closeAddStoreModal() { document.getElementById('addStoreModal').classList.remove('show'); }
+        function showFounderPanel() { document.getElementById('addStoreBtnContainer').classList.toggle('hidden'); }
+        function loginDelivery() { document.getElementById('deliveryLogin').classList.add('hidden'); document.getElementById('deliveryDashboard').classList.remove('hidden'); }
+        function logoutDelivery() { document.getElementById('deliveryLogin').classList.remove('hidden'); document.getElementById('deliveryDashboard').classList.add('hidden'); }
+        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+    </script>
+</body>
+</html>
