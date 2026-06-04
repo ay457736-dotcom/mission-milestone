@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<!-- saved from url=(0081)file:///C:/Users/Gyan%20Ayush/.openclaw/workspace/mission-milestone-v3/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission Milestone - Smart Village Drone Delivery</title>
-    <script src="./Mission Milestone - Smart Village Drone Delivery_files/saved_resource"></script>
-    <link href="./Mission Milestone - Smart Village Drone Delivery_files/css2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
     <style>
         :root {
             --bg-dark: #0a0a0f;
@@ -245,7 +248,7 @@
 
         .order-dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
             margin-top: 40px;
         }
@@ -381,7 +384,7 @@
             box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
         }
 
-        .qr-frame img { width: 180px; height: 180px; }
+        .qr-frame img { width: 180px; height: 180px; object-fit: contain; }
 
         .wall-grid {
             display: grid;
@@ -507,6 +510,7 @@
             -webkit-text-fill-color: transparent;
             font-weight: bold;
             font-size: 20px;
+            background-clip: text;
         }
 
         .order-detail {
@@ -527,53 +531,58 @@
             margin-bottom: 10px;
             font-size: 14px;
         }
+
+        /* Responsive Fixes */
+        @media(max-width: 768px) {
+            nav .flex { gap: 10px; }
+            .hero h1 { font-size: 32px; }
+            .hero .subtitle { font-size: 18px; }
+        }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-4{margin-top:1rem}.flex{display:flex}.hidden{display:none}.w-full{width:100%}.max-w-7xl{max-width:80rem}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.p-3{padding:0.75rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-4{padding-top:1rem;padding-bottom:1rem}.text-center{text-align:center}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:text-cyan-400:hover{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.hover\:text-yellow-300:hover{--tw-text-opacity:1;color:rgb(253 224 71 / var(--tw-text-opacity, 1))}</style></head>
+</head>
 <body>
     <div class="bg-geometric"></div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-card" style="border-radius: 0 0 20px 20px;">
-        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-            <div class="font-bold text-xl" style="font-family: &#39;Orbitron&#39;, sans-serif; color: var(--neon-cyan);">
+        <div style="max-width: 80rem; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div class="font-bold" style="font-size: 1.25rem; font-family: 'Orbitron', sans-serif; color: var(--neon-cyan);">
                 🚀 Mission Milestone
             </div>
-            <div class="flex gap-6 items-center">
-                <a href="#stores" class="text-sm hover:text-cyan-400 transition">Stores</a>
-                <a href="#order" class="text-sm hover:text-cyan-400 transition">Order</a>
-                <a href="#dashboard" class="text-sm hover:text-cyan-400 transition">Dashboard</a>
-                <a href="#wallOfFame" class="text-sm hover:text-cyan-400 transition">Supporters</a>
-                <button onclick="showFounderPanel()" class="text-sm text-yellow-400 hover:text-yellow-300 transition">
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <a href="#stores" style="font-size: 0.875rem; transition: 150ms;" class="hover:text-cyan-400">Stores</a>
+                <a href="#dashboard" style="font-size: 0.875rem; transition: 150ms;" class="hover:text-cyan-400">Dashboard</a>
+                <a href="#shopkeeperDesk" style="font-size: 0.875rem; transition: 150ms;" class="hover:text-cyan-400">Shopkeeper</a>
+                <a href="#wallOfFame" style="font-size: 0.875rem; transition: 150ms;" class="hover:text-cyan-400">Supporters</a>
+                <button onclick="openAdminModal()" style="font-size: 0.875rem; color: #facc15; transition: 150ms;" class="hover:text-yellow-300">
                     👑 Admin
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Mission Milestone</h1>
         <p class="subtitle">Smart Village Drone Delivery</p>
         <div class="hero-buttons">
             <button class="btn btn-primary" onclick="openOrderModal()">📦 Place Order</button>
             <button class="btn btn-secondary" onclick="openJoinModal()">🚀 Join the Revolution</button>
-            <button class="btn btn-secondary" onclick="scrollToSection(&#39;deliveryPortal&#39;)">🚚 Delivery Partner</button>
+            <button class="btn btn-secondary" onclick="scrollToSection('deliveryPortal')">🚚 Delivery Partner</button>
         </div>
     </section>
 
-    <!-- Local Stores Section -->
     <section class="section" id="stores">
         <h2 class="section-title">🏪 Local Stores</h2>
         <p class="section-subtitle">Order from your favorite neighborhood stores</p>
         
-        <div class="text-center mb-8 hidden" id="addStoreBtnContainer">
+        <div style="text-align: center; margin-bottom: 2rem;">
             <button class="btn btn-secondary" onclick="openAddStoreModal()">+ Add Your Store</button>
         </div>
         
-        <div class="store-grid" id="storeGrid"><p class="text-gray-400 text-center" style="grid-column: 1/-1;">No stores yet. Add one!</p></div>
+        <div class="store-grid" id="storeGrid">
+            <p style="color: #9ca3af; text-align: center; grid-column: 1/-1;">Loading stores...</p>
+        </div>
     </section>
 
-    <!-- Order Dashboard -->
     <section class="section" id="dashboard">
         <h2 class="section-title">📊 Order Management Dashboard</h2>
         <p class="section-subtitle">Track your orders in real-time</p>
@@ -581,28 +590,27 @@
         <div class="order-dashboard">
             <div class="glass-card order-column">
                 <h3 class="column-title">⏳ Price Pending</h3>
-                <div id="pendingOrdersList"><p class="text-gray-400 text-sm">No orders</p></div>
+                <div id="pendingOrdersList"><p style="color: #9ca3af; font-size: 0.875rem;">No orders</p></div>
             </div>
             <div class="glass-card order-column">
                 <h3 class="column-title">💳 Awaiting Payment</h3>
-                <div id="paymentOrdersList"><p class="text-gray-400 text-sm">No orders</p></div>
+                <div id="paymentOrdersList"><p style="color: #9ca3af; font-size: 0.875rem;">No orders</p></div>
             </div>
             <div class="glass-card order-column">
                 <h3 class="column-title">🔍 Payment Verification</h3>
-                <div id="verificationOrdersList"><p class="text-gray-400 text-sm">No orders</p></div>
+                <div id="verificationOrdersList"><p style="color: #9ca3af; font-size: 0.875rem;">No orders</p></div>
             </div>
             <div class="glass-card order-column">
                 <h3 class="column-title">🛸 Ready for Delivery</h3>
-                <div id="readyOrdersList"><p class="text-gray-400 text-sm">No orders</p></div>
+                <div id="readyOrdersList"><p style="color: #9ca3af; font-size: 0.875rem;">No orders</p></div>
             </div>
             <div class="glass-card order-column">
                 <h3 class="column-title">✅ Delivered</h3>
-                <div id="deliveredOrdersList"><p class="text-gray-400 text-sm">No orders</p></div>
+                <div id="deliveredOrdersList"><p style="color: #9ca3af; font-size: 0.875rem;">No orders</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Shopkeeper Desk -->
     <section class="section" id="shopkeeperDesk">
         <h2 class="section-title">🏪 Shopkeeper Desk</h2>
         <p class="section-subtitle">Select your store to manage orders</p>
@@ -610,19 +618,20 @@
         <div class="glass-card" style="max-width: 500px; margin: 0 auto; padding: 30px;">
             <div class="form-group">
                 <label>🏪 Select Your Store</label>
-                <select id="shopkeeperStoreSelect" onchange="onShopkeeperStoreSelected()"><option value="">-- Select Store --</option></select>
+                <select id="shopkeeperStoreSelect" onchange="onShopkeeperStoreSelected()">
+                    <option value="">-- Select Store --</option>
+                </select>
             </div>
         </div>
         
         <div id="shopkeeperOrdersSection" class="hidden" style="margin-top: 30px;">
             <div class="glass-card" style="padding: 30px;">
-                <h3 class="text-xl mb-4" id="selectedStoreTitle">Orders</h3>
+                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;" id="selectedStoreTitle">Orders</h3>
                 <div id="shopkeeperOrdersList"></div>
             </div>
         </div>
     </section>
 
-    <!-- Delivery Partner Portal -->
     <section class="section" id="deliveryPortal">
         <h2 class="section-title">🚚 Delivery Partner Portal</h2>
         
@@ -632,7 +641,7 @@
             
             <div class="form-group">
                 <label>🆔 Delivery ID</label>
-                <input type="text" id="deliveryId" placeholder="Enter ID">
+                <input type="text" id="deliveryId" placeholder="Enter ID (e.g., pilot1)">
             </div>
             
             <div class="form-group">
@@ -641,13 +650,12 @@
             </div>
             
             <button class="login-submit-btn" onclick="loginDelivery()">Login</button>
-            
         </div>
         
         <div id="deliveryDashboard" class="hidden">
             <div class="glass-card" style="padding: 30px; margin-bottom: 30px;">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl">🚚 Active Deliveries</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.25rem;">🚚 Active Drone Deliveries</h3>
                     <button class="btn btn-secondary" onclick="logoutDelivery()">Logout</button>
                 </div>
                 <div id="deliveryOrdersList"></div>
@@ -655,31 +663,27 @@
         </div>
     </section>
 
-    <!-- Visionary Supporters -->
     <section class="section" id="wallOfFame">
         <h2 class="section-title">🌟 Our Visionary Supporters</h2>
         <p class="section-subtitle">People who believe in the future of drone delivery</p>
         
-        <div class="wall-grid" id="wallGrid"><p class="text-gray-400 text-center" style="grid-column: 1/-1;">Be the first to support!</p></div>
+        <div class="wall-grid" id="wallGrid">
+            <p style="color: #9ca3af; text-align: center; grid-column: 1/-1;">Loading supporters...</p>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-links">
             <a href="#stores" class="footer-link">Stores</a>
-            <a href="#order" class="footer-link">Order</a>
             <a href="#dashboard" class="footer-link">Dashboard</a>
-            <a href="#wallOfFame" class="footer-link">Supporters</a>
             <a href="#shopkeeperDesk" class="footer-link">Shopkeeper</a>
+            <a href="#wallOfFame" class="footer-link">Supporters</a>
             <a href="#deliveryPortal" class="footer-link founder-link">🚚 Delivery</a>
         </div>
         <p>Smart Village Drone Delivery</p>
         <p class="credit">By Ayush</p>
     </footer>
 
-    <!-- ==================== MODALS ==================== -->
-
-    <!-- Order Modal -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeOrderModal()">×</span>
@@ -697,22 +701,19 @@
             
             <div class="form-group">
                 <label>📍 Your Location</label>
-                <button class="btn btn-secondary" style="width: 100%;" onclick="getLocation()">📍 Get My Location</button>
-                <input type="text" id="orderLocation" placeholder="Location will appear here" readonly="">
+                <button class="btn btn-secondary" style="width: 100%; margin-bottom: 10px;" onclick="getLocation()">📍 Get My Location</button>
+                <input type="text" id="orderLocation" placeholder="Coordinates will appear here" readonly>
             </div>
             
             <div class="form-group">
                 <label>🛒 Items (one per line)</label>
-                <textarea id="orderItems" rows="4" placeholder="Milk
-Bread
-Eggs"></textarea>
+                <textarea id="orderItems" rows="4" placeholder="Milk&#10;Bread&#10;Eggs"></textarea>
             </div>
             
             <button class="login-submit-btn" onclick="submitOrder()">✅ Submit Order</button>
         </div>
     </div>
 
-    <!-- Join Revolution Modal -->
     <div class="modal" id="joinModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeJoinModal()">×</span>
@@ -721,9 +722,9 @@ Eggs"></textarea>
             
             <div class="qr-display">
                 <div class="qr-frame">
-                    <img src="ayush_upi.jpeg" alt="Payment QR">
+                    <img src="ayush_upi.jpeg" alt="Payment QR" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=ayush@upi';">
                 </div>
-                <p style="color: #666; margin-top: 10px;">Scan to Pay via UPI</p>
+                <p style="color: #a0a0b0; margin-top: 10px;">Scan to Pay via UPI</p>
             </div>
             
             <div class="form-group">
@@ -745,725 +746,518 @@ Eggs"></textarea>
                 <label>📝 Short Note (optional)</label>
                 <textarea id="investorNote" rows="2" placeholder="Your message"></textarea>
             </div>
-            
-            <button class="login-submit-btn" onclick="submitInvestment()">✅ Submit Investment</button>
+
+            <button class="login-submit-btn" onclick="submitInvestment()">💎 Submit Contribution</button>
         </div>
     </div>
 
-    <!-- Add Store Modal -->
     <div class="modal" id="addStoreModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeAddStoreModal()">×</span>
-            <h2 style="text-align: center; margin-bottom: 25px;">🏪 Add New Store</h2>
+            <h2 style="text-align: center; margin-bottom: 25px;">🏪 Register Your Store</h2>
             
             <div class="form-group">
                 <label>🏪 Store Name</label>
-                <input type="text" id="newStoreName" placeholder="Store name">
+                <input type="text" id="newStoreName" placeholder="e.g., Ayush General Store">
             </div>
-            
             <div class="form-group">
-                <label>📂 Category</label>
-                <select id="newStoreCategory">
-                    <option value="Kirana">Kirana / General Store</option>
-                    <option value="Sweets">Sweets &amp; Namkeen</option>
-                    <option value="Pharmacy">Pharmacy</option>
-                    <option value="Restaurant">Restaurant</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Other">Other</option>
-                </select>
+                <label>🏷️ Category</label>
+                <input type="text" id="newStoreCategory" placeholder="e.g., Grocery, Medical, Electronics">
             </div>
-            
             <div class="form-group">
-                <label>🖼️ Store QR Code Image</label>
-                <input type="file" id="storeQrFile" accept="image/*" class="w-full p-3 bg-black/40 border border-white/10 rounded-xl text-white">
+                <label>✨ Store Logo Emoji</label>
+                <input type="text" id="newStoreLogo" placeholder="e.g., 🍏, 💊, 🍔, 📦" maxLength="2">
             </div>
             
-            <button class="login-submit-btn" onclick="addNewStore()">✅ Create Store</button>
+            <button class="login-submit-btn" onclick="submitNewStore()">✨ Create Store</button>
         </div>
     </div>
 
-    <!-- Founder Panel Modal -->
-    <div class="modal" id="founderPanel">
-        <div class="modal-content" style="max-width: 700px;">
-            <span class="modal-close" onclick="closeFounderPanel()">×</span>
-            
-            <!-- Admin Login Form (shown if not logged in) -->
-            <div id="adminLoginForm">
-                <h2 style="text-align: center; margin-bottom: 10px;">👑 Admin Login</h2>
-                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">Enter your admin credentials</p>
-                
-                <div class="form-group">
-                    <label>🆔 Admin ID</label>
-                    <input type="text" id="adminId" placeholder="Enter Admin ID">
-                </div>
-                
-                <div class="form-group">
-                    <label>🔑 Password</label>
-                    <input type="password" id="adminPass" placeholder="Enter Password">
-                </div>
-                
-                <button class="login-submit-btn" onclick="loginAdmin()">Login</button>
-                
-            </div>
-            
-            <!-- Admin Dashboard (hidden until logged in) -->
-            <div id="adminDashboard" class="hidden">
-                <h2 style="text-align: center; margin-bottom: 10px;">👑 Admin Panel</h2>
-                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">Manage investments &amp; stores</p>
-                
-                <h3 class="text-lg mb-4" style="color: var(--neon-cyan);">💰 Pending Investments</h3>
-                <div id="pendingInvestmentsList" class="mb-8"></div>
-                
-                <h3 class="text-lg mb-4" style="color: var(--neon-cyan);">🏪 Stores</h3>
-                <div id="founderStoresList"></div>
-                
-                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="logoutAdmin()">Logout</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Payment Modal (Customer) -->
-    <div class="modal" id="paymentModal">
+    <div class="modal" id="adminModal">
         <div class="modal-content">
-            <span class="modal-close" onclick="closePaymentModal()">×</span>
-            <h2 style="text-align: center; margin-bottom: 10px;">💳 Confirm Payment</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">Order #<span id="paymentOrderId"></span></p>
+            <span class="modal-close" onclick="closeAdminModal()">×</span>
+            <h2 style="text-align: center; margin-bottom: 25px;">👑 Founder Control Room</h2>
             
-            <div class="text-center mb-4">
-                <p class="text-gray-400">Total Bill Amount</p>
-                <p class="badge-amount" id="paymentAmount">₹0</p>
-            </div>
-            
-            <div class="qr-display">
-                <p style="margin-bottom: 10px; color: var(--text-secondary);">Scan Store's QR to Pay</p>
-                <div class="qr-frame">
-                    <img id="paymentQR" src="" alt="Store QR">
+            <div id="adminLoginArea">
+                <div class="form-group">
+                    <label>🔑 Admin Security Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter password">
                 </div>
+                <button class="login-submit-btn" onclick="loginAdmin()">Verify Identity</button>
             </div>
-            
-            <div class="form-group mt-4">
-                <label>🔢 Transaction UTR / Reference ID</label>
-                <input type="text" id="paymentUTR" placeholder="Enter transaction reference">
+
+            <div id="adminDashboardArea" class="hidden">
+                <h3 style="color: var(--neon-cyan); margin-bottom: 15px;">Review Contributions</h3>
+                <div id="adminInvestmentList"></div>
             </div>
-            
-            <div class="form-group">
-                <label>📝 Note (optional)</label>
-                <input type="text" id="paymentNote" placeholder="Any note">
-            </div>
-            
-            <button class="login-submit-btn" onclick="confirmPayment()">✅ Confirm Payment</button>
         </div>
     </div>
-
-    <!-- ==================== JAVASCRIPT ==================== -->
 
     <script>
-    // ==================== ADMIN CONFIG ====================
-    const ADMIN_CONFIG = { id: "ayushadmin", pass: "founder2026" };
-    
-    // ==================== GLOBAL STATE ====================
-    let stores = [];
-    let orders = [];
-    let investments = [];
-    let currentShopkeeperStoreId = null;
-    let currentPaymentOrderId = null;
-    let isDeliveryLoggedIn = false;
-    let isAdminLoggedIn = false;
-
-    // ==================== LOCAL STORAGE ====================
-    function loadFromStorage(key, defaultValue) {
-        const data = localStorage.getItem(key);
-        return data ? JSON.parse(data) : defaultValue;
-    }
-
-    function saveToStorage(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    function initStorage() {
-        // Load from localStorage
-        stores = loadFromStorage('mm_v3_stores', []);
-        orders = loadFromStorage('mm_v3_orders', []);
-        investments = loadFromStorage('mm_v3_investments', []);
-    }
-
-    // ==================== RENDER FUNCTIONS ====================
-    function renderStores() {
-        const grid = document.getElementById('storeGrid');
-        if (stores.length === 0) {
-            grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column: 1/-1;">No stores yet. Add one!</p>';
-            return;
-        }
-        
-        grid.innerHTML = stores.map((store, idx) => `
-            <div class="glass-card store-card">
-                <div class="store-logo">🏪</div>
-                <h3 class="store-name">${store.storeName}</h3>
-                <p class="store-category">${store.category}</p>
-                <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="selectStore(${idx})">Shop Now</button>
-            </div>
-        `).join('');
-    }
-
-    function renderOrders() {
-        const statusMap = {
-            'pending': { list: 'pendingOrdersList', class: 'status-pending' },
-            'price': { list: 'paymentOrdersList', class: 'status-price' },
-            'payment': { list: 'verificationOrdersList', class: 'status-payment' },
-            'ready': { list: 'readyOrdersList', class: 'status-ready' },
-            'delivered': { list: 'deliveredOrdersList', class: 'status-delivered' }
+        // 1. Firebase Configuration
+        const firebaseConfig = {
+            databaseURL: "https://mission-milestone-v3-default-rtdb.firebaseio.com/"
         };
         
-        const statusLabels = {
-            'pending': 'Price Pending ⏳',
-            'price': 'Awaiting Payment 💳',
-            'payment': 'Verification 🔍',
-            'ready': 'Ready for Delivery 🛸',
-            'delivered': 'Delivered ✅'
-        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // 2. Global State Variable
+        let allStores = {};
+
+        // 3. Navigation Helper
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 4. Modal Triggers
+        function openOrderModal() { document.getElementById('orderModal').classList.add('show'); }
+        function closeOrderModal() { document.getElementById('orderModal').classList.remove('show'); }
         
-        // Clear all columns
-        Object.values(statusMap).forEach(item => {
-            document.getElementById(item.list).innerHTML = '<p class="text-gray-400 text-sm">No orders</p>';
-        });
-        
-        orders.forEach(order => {
-            const status = statusMap[order.status];
-            if (!status) return;
-            
-            const container = document.getElementById(status.list);
-            const store = stores.find(s => s.id === order.storeId) || { storeName: 'Unknown', storeQR: '' };
-            
-            let extraHtml = '';
-            
-            if (order.status === 'price' && order.billAmount) {
-                extraHtml = `
-                    <p class="text-sm text-green-400 mt-2">Bill: ₹${order.billAmount}</p>
-                    <button class="action-btn btn-pay" onclick="openPaymentModal(${order.orderId})" style="width: 100%;">💳 Pay Now</button>
-                `;
+        function openJoinModal() { document.getElementById('joinModal').classList.add('show'); }
+        function closeJoinModal() { document.getElementById('joinModal').classList.remove('show'); }
+
+        function openAddStoreModal() { document.getElementById('addStoreModal').classList.add('show'); }
+        function closeAddStoreModal() { document.getElementById('addStoreModal').classList.remove('show'); }
+
+        function openAdminModal() { 
+            document.getElementById('adminModal').classList.add('show'); 
+            document.getElementById('adminLoginArea').classList.remove('hidden');
+            document.getElementById('adminDashboardArea').classList.add('hidden');
+        }
+        function closeAdminModal() { document.getElementById('adminModal').classList.remove('show'); }
+
+        // 5. Geolocation Feature
+        function getLocation() {
+            const locInput = document.getElementById('orderLocation');
+            if (navigator.geolocation) {
+                locInput.value = "Fetching GPS coordinates...";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        locInput.value = `${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)}`;
+                    },
+                    (error) => {
+                        locInput.value = "Location access denied. Please enter manually.";
+                        locInput.readOnly = false;
+                    }
+                );
+            } else {
+                locInput.value = "Geolocation not supported. Enter manually.";
+                locInput.readOnly = false;
             }
-            
-            if (order.status === 'payment' && order.billAmount) {
-                extraHtml = `
-                    <p class="text-sm text-green-400 mt-2">Bill: ₹${order.billAmount}</p>
-                    <p class="text-xs text-gray-400">UTR: ${order.paymentUTR || 'N/A'}</p>
-                    <p class="text-yellow-400 text-sm mt-2">⏳ Awaiting vendor verification</p>
-                `;
+        }
+
+        // 6. Submit New Store to Firebase
+        function submitNewStore() {
+            const name = document.getElementById('newStoreName').value.trim();
+            const category = document.getElementById('newStoreCategory').value.trim();
+            const logo = document.getElementById('newStoreLogo').value.trim() || "🏪";
+
+            if (!name || !category) {
+                alert("Please fill all store fields.");
+                return;
             }
-            
-            if (order.status === 'ready' && order.location) {
-                const lat = order.location.latitude.toFixed(6);
-                const lng = order.location.longitude.toFixed(6);
-                extraHtml = `
-                    <p class="text-xs text-gray-400">To: ${lat}, ${lng}</p>
-                    <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank" class="location-btn">📍 View Live Location</a>
-                `;
-            }
-            
-            container.innerHTML = `
-                <div class="order-card">
-                    <div class="order-id">#${order.orderId}</div>
-                    <div class="order-store">${store.storeName}</div>
-                    <div class="order-detail">Customer: ${order.customerName}</div>
-                    <div class="order-detail">Items: ${order.items}</div>
-                    <div class="order-status ${status.class}">${statusLabels[order.status]}</div>
-                    ${extraHtml}
-                </div>
-            `;
-        });
-    }
 
-    function renderDeliveryOrders() {
-        const container = document.getElementById('deliveryOrdersList');
-        const readyOrders = orders.filter(o => o.status === 'ready');
-        
-        if (readyOrders.length === 0) {
-            container.innerHTML = '<p class="text-gray-400">No deliveries ready</p>';
-            return;
-        }
-        
-        container.innerHTML = readyOrders.map(order => {
-            const store = stores.find(s => s.id === order.storeId) || { storeName: 'Unknown' };
-            const lat = order.location?.latitude?.toFixed(6) || '0';
-            const lng = order.location?.longitude?.toFixed(6) || '0';
-            
-            return `
-                <div class="order-card">
-                    <div class="order-id">#${order.orderId}</div>
-                    <div class="order-store">${store.storeName}</div>
-                    <div class="order-detail">Customer: ${order.customerName}</div>
-                    <div class="order-detail">Items: ${order.items}</div>
-                    <div class="text-green-400 font-bold">Bill: ₹${order.billAmount || 0}</div>
-                    <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank" class="location-btn">📍 View Live Location</a>
-                    <button class="action-btn btn-confirm-delivery" onclick="confirmDelivery(${order.orderId})" style="width: 100%;">✅ Confirm Delivery</button>
-                </div>
-            `;
-        }).join('');
-    }
-
-    function renderShopkeeperOrders() {
-        const container = document.getElementById('shopkeeperOrdersList');
-        const section = document.getElementById('shopkeeperOrdersSection');
-        
-        if (!currentShopkeeperStoreId) {
-            section.classList.add('hidden');
-            return;
-        }
-        
-        section.classList.remove('hidden');
-        const store = stores.find(s => s.id === currentShopkeeperStoreId);
-        document.getElementById('selectedStoreTitle').textContent = `${store.storeName} - Orders`;
-        
-        const myOrders = orders.filter(o => o.storeId === currentShopkeeperStoreId && 
-            ['pending', 'price', 'payment'].includes(o.status));
-        
-        if (myOrders.length === 0) {
-            container.innerHTML = '<p class="text-gray-400">No orders for your store</p>';
-            return;
-        }
-        
-        container.innerHTML = myOrders.map(order => {
-            let actionHtml = '';
-            if (order.status === 'pending') {
-                actionHtml = `
-                    <div class="form-group mt-3">
-                        <label>💰 Total Bill Amount (₹)</label>
-                        <input type="number" id="bill_${order.orderId}" placeholder="Enter amount">
-                    </div>
-                    <button class="action-btn btn-send-bill" onclick="sendBill(${order.orderId})" style="width: 100%;">📤 Send Bill</button>
-                `;
-            } else if (order.status === 'price') {
-                actionHtml = '<p class="text-yellow-400 text-sm mt-2">⏳ Waiting for customer payment...</p>';
-            } else if (order.status === 'payment') {
-                actionHtml = `
-                    <p class="text-blue-400 text-sm">UTR: ${order.paymentUTR || 'N/A'}</p>
-                    ${order.paymentNote ? `<p class="text-gray-400 text-sm">Note: ${order.paymentNote}</p>` : ''}
-                    <button class="action-btn btn-launch-drone" onclick="launchDrone(${order.orderId})" style="width: 100%;">🛸 Launch Drone</button>
-                `;
-            }
-            
-            return `
-                <div class="order-card">
-                    <div class="order-id">#${order.orderId}</div>
-                    <div class="order-detail">Customer: ${order.customerName}</div>
-                    <div class="order-detail">Items: ${order.items}</div>
-                    ${order.billAmount ? `<div class="text-green-400 font-bold">Bill: ₹${order.billAmount}</div>` : ''}
-                    ${actionHtml}
-                </div>
-            `;
-        }).join('');
-    }
-
-    function renderWallOfFame() {
-        const grid = document.getElementById('wallGrid');
-        const approved = investments.filter(i => i.status === 'approved');
-        
-        if (approved.length === 0) {
-            grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column: 1/-1;">Be the first to support!</p>';
-            return;
-        }
-        
-        grid.innerHTML = approved.map(inv => `
-            <div class="glass-card supporter-card">
-                <div class="supporter-name">${inv.name}</div>
-                <div class="supporter-amount">₹${inv.amount.toLocaleString()}</div>
-                ${inv.note ? `<div class="supporter-note">"${inv.note}"</div>` : ''}
-            </div>
-        `).join('');
-    }
-
-    function renderFounderPanel() {
-        // Pending Investments
-        const invContainer = document.getElementById('pendingInvestmentsList');
-        const pending = investments.filter(i => i.status === 'pending');
-        
-        if (pending.length === 0) {
-            invContainer.innerHTML = '<p class="text-gray-400">No pending investments</p>';
-        } else {
-            invContainer.innerHTML = pending.map(inv => `
-                <div class="order-card">
-                    <div class="order-id">${inv.name}</div>
-                    <div class="text-green-400 font-bold">₹${inv.amount.toLocaleString()}</div>
-                    <div class="order-detail">UTR: ${inv.utr}</div>
-                    ${inv.note ? `<div class="text-gray-400 text-sm">"${inv.note}"</div>` : ''}
-                    <button class="action-btn btn-approve" onclick="approveInvestment(${inv.id})" style="width: 100%; margin-top: 10px;">✅ Approve</button>
-                </div>
-            `).join('');
-        }
-        
-        // Stores
-        const storeContainer = document.getElementById('founderStoresList');
-        if (stores.length === 0) {
-            storeContainer.innerHTML = '<p class="text-gray-400">No stores</p>';
-        } else {
-            storeContainer.innerHTML = stores.map(store => `
-                <div class="order-card">
-                    <div class="order-id">${store.storeName}</div>
-                    <div class="order-detail">${store.category}</div>
-                    <div class="order-detail">QR: ${store.storeQR}</div>
-                </div>
-            `).join('');
-        }
-    }
-
-    function populateStoreSelects() {
-        const orderSelect = document.getElementById('orderStoreSelect');
-        const shopkeeperSelect = document.getElementById('shopkeeperStoreSelect');
-        
-        const options = '<option value="">-- Select a Store --</option>' + 
-            stores.map(s => `<option value="${s.id}">${s.storeName}</option>`).join('');
-        
-        orderSelect.innerHTML = options;
-        shopkeeperSelect.innerHTML = '<option value="">-- Select Store --</option>' + 
-            stores.map(s => `<option value="${s.id}">${s.storeName}</option>`).join('');
-    }
-
-    // ==================== MODAL FUNCTIONS ====================
-    function openOrderModal() {
-        populateStoreSelects();
-        document.getElementById('orderModal').classList.add('show');
-    }
-
-    function closeOrderModal() {
-        document.getElementById('orderModal').classList.remove('show');
-    }
-
-    function openJoinModal() {
-        document.getElementById('joinModal').classList.add('show');
-    }
-
-    function closeJoinModal() {
-        document.getElementById('joinModal').classList.remove('show');
-    }
-
-    function openAddStoreModal() {
-        document.getElementById('addStoreModal').classList.add('show');
-    }
-
-    function closeAddStoreModal() {
-        document.getElementById('addStoreModal').classList.remove('show');
-    }
-
-    function showFounderPanel() {
-        document.getElementById('founderPanel').classList.add('show');
-        if (isAdminLoggedIn) {
-            document.getElementById('adminLoginForm').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-            renderFounderPanel();
-        } else {
-            document.getElementById('adminLoginForm').classList.remove('hidden');
-            document.getElementById('adminDashboard').classList.add('hidden');
-        }
-    }
-
-    function closeFounderPanel() {
-        document.getElementById('founderPanel').classList.remove('show');
-    }
-
-    function openPaymentModal(orderId) {
-        const order = orders.find(o => o.orderId === orderId);
-        const store = stores.find(s => s.id === order.storeId);
-        
-        currentPaymentOrderId = orderId;
-        document.getElementById('paymentOrderId').textContent = orderId;
-        document.getElementById('paymentAmount').textContent = `₹${order.billAmount}`;
-        document.getElementById('paymentQR').src = store.storeQR || '../mission-milestone/qr-code.jpeg';
-        document.getElementById('paymentModal').classList.add('show');
-    }
-
-    function closePaymentModal() {
-        document.getElementById('paymentModal').classList.remove('show');
-        document.getElementById('paymentUTR').value = '';
-        document.getElementById('paymentNote').value = '';
-        currentPaymentOrderId = null;
-    }
-
-    // ==================== ORDER FUNCTIONS ====================
-    function selectStore(idx) {
-        const store = stores[idx];
-        document.getElementById('orderStoreSelect').value = store.id;
-        openOrderModal();
-    }
-
-    function getLocation() {
-        if (!navigator.geolocation) {
-            alert('Geolocation not supported');
-            return;
-        }
-        
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const coords = `${position.coords.latitude.toFixed(6)}, ${position.coords.longitude.toFixed(6)}`;
-                document.getElementById('orderLocation').value = coords;
-            },
-            (error) => {
-                alert('Error getting location: ' + error.message);
-            }
-        );
-    }
-
-    function submitOrder() {
-        const storeId = document.getElementById('orderStoreSelect').value;
-        const customerName = document.getElementById('orderCustomerName').value.trim();
-        const locationStr = document.getElementById('orderLocation').value;
-        const items = document.getElementById('orderItems').value.trim();
-        
-        if (!storeId || !customerName || !locationStr || !items) {
-            alert('Please fill all fields!');
-            return;
-        }
-        
-        const lat = parseFloat(locationStr.split(',')[0]);
-        const lng = parseFloat(locationStr.split(',')[1]);
-        
-        const order = {
-            orderId: Date.now(),
-            storeId: storeId,
-            customerName: customerName,
-            items: items,
-            location: { latitude: lat, longitude: lng },
-            status: 'pending',
-            billAmount: null,
-            paymentUTR: null,
-            paymentNote: null,
-            createdAt: new Date().toISOString()
-        };
-        
-        orders.push(order);
-        saveToStorage('mm_v3_orders', orders);
-        closeOrderModal();
-        renderOrders();
-        alert('Order placed! Wait for shopkeeper to set the bill.');
-        
-        // Clear form
-        document.getElementById('orderCustomerName').value = '';
-        document.getElementById('orderLocation').value = '';
-        document.getElementById('orderItems').value = '';
-    }
-
-    function confirmPayment() {
-        const utr = document.getElementById('paymentUTR').value.trim();
-        const note = document.getElementById('paymentNote').value.trim();
-        
-        if (!utr) {
-            alert('Please enter transaction reference!');
-            return;
-        }
-        
-        const order = orders.find(o => o.orderId === currentPaymentOrderId);
-        if (order) {
-            order.paymentUTR = utr;
-            order.paymentNote = note;
-            order.status = 'payment';
-            saveToStorage('mm_v3_orders', orders);
-            closePaymentModal();
-            renderOrders();
-            alert('Payment confirmed! Waiting for vendor verification.');
-        }
-    }
-
-    // ==================== SHOPKEEPER FUNCTIONS ====================
-    function onShopkeeperStoreSelected() {
-        currentShopkeeperStoreId = document.getElementById('shopkeeperStoreSelect').value;
-        renderShopkeeperOrders();
-    }
-
-    function sendBill(orderId) {
-        const amount = parseInt(document.getElementById(`bill_${orderId}`).value);
-        if (!amount || amount <= 0) {
-            alert('Please enter a valid amount!');
-            return;
-        }
-        
-        const order = orders.find(o => o.orderId === orderId);
-        if (order) {
-            order.billAmount = amount;
-            order.status = 'price';
-            saveToStorage('mm_v3_orders', orders);
-            renderOrders();
-            renderShopkeeperOrders();
-            alert('Bill sent to customer!');
-        }
-    }
-
-    function launchDrone(orderId) {
-        const order = orders.find(o => o.orderId === orderId);
-        if (order) {
-            order.status = 'ready';
-            saveToStorage('mm_v3_orders', orders);
-            renderOrders();
-            renderShopkeeperOrders();
-            alert('Drone launched! Ready for delivery.');
-        }
-    }
-
-    // ==================== DELIVERY FUNCTIONS ====================
-    function loginDelivery() {
-        const id = document.getElementById('deliveryId').value.trim();
-        const pass = document.getElementById('deliveryPassword').value.trim();
-        
-        if (id === 'driver01' && pass === 'drone123') {
-            isDeliveryLoggedIn = true;
-            document.getElementById('deliveryLogin').classList.add('hidden');
-            document.getElementById('deliveryDashboard').classList.remove('hidden');
-            renderDeliveryOrders();
-            alert('Delivery Partner logged in!');
-        } else {
-            alert('Invalid credentials!');
-        }
-    }
-
-    function logoutDelivery() {
-        isDeliveryLoggedIn = false;
-        document.getElementById('deliveryLogin').classList.remove('hidden');
-        document.getElementById('deliveryDashboard').classList.add('hidden');
-    }
-
-    function confirmDelivery(orderId) {
-        const order = orders.find(o => o.orderId === orderId);
-        if (order) {
-            order.status = 'delivered';
-            saveToStorage('mm_v3_orders', orders);
-            renderOrders();
-            renderDeliveryOrders();
-            alert('Delivery confirmed!');
-        }
-    }
-
-    // ==================== INVESTMENT FUNCTIONS ====================
-    function submitInvestment() {
-        const name = document.getElementById('investorName').value.trim();
-        const amount = parseInt(document.getElementById('investorAmount').value);
-        const utr = document.getElementById('investorUTR').value.trim();
-        const note = document.getElementById('investorNote').value.trim();
-        
-        if (!name || !amount || amount < 10000 || !utr) {
-            alert('Please fill all required fields! Minimum ₹10,000.');
-            return;
-        }
-        
-        const investment = {
-            id: Date.now(),
-            name: name,
-            amount: amount,
-            utr: utr,
-            note: note,
-            status: 'pending',
-            date: new Date().toISOString()
-        };
-        
-        investments.push(investment);
-        saveToStorage('mm_v3_investments', investments);
-        closeJoinModal();
-        alert('Thank you! Your investment is pending approval.');
-        
-        // Clear form
-        document.getElementById('investorName').value = '';
-        document.getElementById('investorAmount').value = '';
-        document.getElementById('investorUTR').value = '';
-        document.getElementById('investorNote').value = '';
-    }
-
-    function approveInvestment(investmentId) {
-        const inv = investments.find(i => i.id === investmentId);
-        if (inv) {
-            inv.status = 'approved';
-            saveToStorage('mm_v3_investments', investments);
-            renderFounderPanel();
-            renderWallOfFame();
-            alert('Investment approved!');
-        }
-    }
-
-    // ==================== STORE FUNCTIONS ====================
-    function addNewStore() {
-        const name = document.getElementById('newStoreName').value.trim();
-        const category = document.getElementById('newStoreCategory').value;
-        const fileInput = document.getElementById('storeQrFile');
-        const file = fileInput.files[0];
-        
-        if (!name || !file) {
-            alert('Please fill all fields and select a QR image!');
-            return;
-        }
-        
-        // Convert file to Base64
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const base64QR = e.target.result;
-            
-            const store = {
-                id: 'store' + (Date.now()),
-                storeName: name,
+            const storeRef = database.ref('stores').push();
+            storeRef.set({
+                name: name,
                 category: category,
-                storeQR: base64QR,
-                createdAt: new Date().toISOString()
-            };
-            
-            stores.push(store);
-            saveToStorage('mm_v3_stores', stores);
-            renderStores();
-            populateStoreSelects();
-            closeAddStoreModal();
-            alert('Store created successfully!');
-            
-            // Clear form
-            document.getElementById('newStoreName').value = '';
-            fileInput.value = '';
-        };
-        
-        reader.readAsDataURL(file);
-    }
-    
-    // ==================== ADMIN FUNCTIONS ====================
-    function loginAdmin() {
-        const id = document.getElementById('adminId').value.trim();
-        const pass = document.getElementById('adminPass').value.trim();
-        
-        if (id === ADMIN_CONFIG.id && pass === ADMIN_CONFIG.pass) {
-            isAdminLoggedIn = true;
-            document.getElementById('adminLoginForm').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-            document.getElementById('addStoreBtnContainer').classList.remove('hidden');
-            renderFounderPanel();
-            alert('Admin logged in!');
-        } else {
-            alert('Invalid credentials!');
+                logo: logo
+            }).then(() => {
+                alert("Store registered successfully!");
+                closeAddStoreModal();
+                document.getElementById('newStoreName').value = '';
+                document.getElementById('newStoreCategory').value = '';
+                document.getElementById('newStoreLogo').value = '';
+            });
         }
-    }
-    
-    function logoutAdmin() {
-        isAdminLoggedIn = false;
-        document.getElementById('adminLoginForm').classList.remove('hidden');
-        document.getElementById('adminDashboard').classList.add('hidden');
-        document.getElementById('addStoreBtnContainer').classList.add('hidden');
-    }
 
-    // ==================== UTILITIES ====================
-    function scrollToSection(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
+        // 7. Submit Order to Firebase
+        function submitOrder() {
+            const storeId = document.getElementById('orderStoreSelect').value;
+            const customerName = document.getElementById('orderCustomerName').value.trim();
+            const location = document.getElementById('orderLocation').value.trim();
+            const items = document.getElementById('orderItems').value.trim();
 
-    // ==================== INIT ====================
-    window.onload = function() {
-        initStorage();
-        renderStores();
-        renderOrders();
-        renderWallOfFame();
-        populateStoreSelects();
-        
-        // Hide admin-only elements by default
-        document.getElementById('addStoreBtnContainer').classList.add('hidden');
-        
-        // Modal click outside to close
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('show');
+            if (!storeId || !customerName || !location || !items) {
+                alert("Please fill all ordering fields!");
+                return;
+            }
+
+            const orderRef = database.ref('orders').push();
+            orderRef.set({
+                storeId: storeId,
+                storeName: allStores[storeId].name,
+                customerName: customerName,
+                location: location,
+                items: items,
+                status: 'pending', // pending -> price_given -> payment_submitted -> ready_for_delivery -> delivered
+                price: 0,
+                utr: ''
+            }).then(() => {
+                alert("Order submitted! Wait for shopkeeper to add price.");
+                closeOrderModal();
+                document.getElementById('orderCustomerName').value = '';
+                document.getElementById('orderLocation').value = '';
+                document.getElementById('orderItems').value = '';
+            });
+        }
+
+        // 8. Submit Contribution (Join Revolution)
+        function submitInvestment() {
+            const name = document.getElementById('investorName').value.trim();
+            const amount = parseInt(document.getElementById('investorAmount').value);
+            const utr = document.getElementById('investorUTR').value.trim();
+            const note = document.getElementById('investorNote').value.trim() || "No message";
+
+            if (!name || isNaN(amount) || !utr) {
+                alert("Please enter Name, Amount, and UTR Reference ID.");
+                return;
+            }
+            if (amount < 10000) {
+                alert("Minimum milestone support starts from ₹10,000.");
+                return;
+            }
+
+            database.ref('investments').push().set({
+                name: name,
+                amount: amount,
+                utr: utr,
+                note: note,
+                status: 'pending' // pending -> approved
+            }).then(() => {
+                alert("Payment details logged! Admin will audit and put your card on Wall of Fame.");
+                closeJoinModal();
+                document.getElementById('investorName').value = '';
+                document.getElementById('investorAmount').value = '';
+                document.getElementById('investorUTR').value = '';
+                document.getElementById('investorNote').value = '';
+            });
+        }
+
+        // 9. Fetch and Sync Stores & Dropdowns
+        database.ref('stores').on('value', (snapshot) => {
+            const data = snapshot.val() || {};
+            allStores = data;
+            
+            const storeGrid = document.getElementById('storeGrid');
+            const orderSelect = document.getElementById('orderStoreSelect');
+            const shopkeeperSelect = document.getElementById('shopkeeperStoreSelect');
+
+            if (Object.keys(data).length === 0) {
+                storeGrid.innerHTML = `<p style="color: #9ca3af; text-align: center; grid-column: 1/-1;">No stores yet. Add one!</p>`;
+                return;
+            }
+
+            storeGrid.innerHTML = '';
+            orderSelect.innerHTML = '<option value="">-- Select a Store --</option>';
+            shopkeeperSelect.innerHTML = '<option value="">-- Select Store --</option>';
+
+            for (let id in data) {
+                // UI Cards
+                storeGrid.innerHTML += `
+                    <div class="glass-card store-card">
+                        <div class="store-logo">${data[id].logo || '🏪'}</div>
+                        <div class="store-name">${data[id].name}</div>
+                        <div class="store-category">${data[id].category}</div>
+                        <button class="btn btn-secondary" style="padding:8px 16px; font-size:12px;" onclick="openOrderModal()">Order Now</button>
+                    </div>
+                `;
+                // Dropdowns
+                orderSelect.innerHTML += `<option value="${id}">${data[id].name}</option>`;
+                shopkeeperSelect.innerHTML += `<option value="${id}">${data[id].name}</option>`;
+            }
+        });
+
+        // 10. Real-time Order Stream & Live Dashboard Routing
+        database.ref('orders').on('value', (snapshot) => {
+            const data = snapshot.val() || {};
+            
+            const pendingList = document.getElementById('pendingOrdersList');
+            const paymentList = document.getElementById('paymentOrdersList');
+            const verificationList = document.getElementById('verificationOrdersList');
+            const readyList = document.getElementById('readyOrdersList');
+            const deliveredList = document.getElementById('deliveredOrdersList');
+
+            // Reset lists
+            pendingList.innerHTML = '';
+            paymentList.innerHTML = '';
+            verificationList.innerHTML = '';
+            readyList.innerHTML = '';
+            deliveredList.innerHTML = '';
+
+            let counts = { pending: 0, price_given: 0, payment_submitted: 0, ready_for_delivery: 0, delivered: 0 };
+
+            for (let id in data) {
+                const order = data[id];
+                const cardHTML = `
+                    <div class="order-card">
+                        <div class="order-id">🆔 ${id.substring(1, 8).toUpperCase()}</div>
+                        <div class="order-detail"><strong>From:</strong> ${order.storeName}</div>
+                        <div class="order-detail"><strong>Client:</strong> ${order.customerName}</div>
+                        <div class="order-detail"><strong>Items:</strong> <br>${order.items.replace(/\n/g, '<br>')}</div>
+                        ${order.price > 0 ? `<div class="order-detail"><span class="badge-amount">₹${order.price}</span></div>` : ''}
+                        
+                        ${order.status === 'price_given' ? `
+                            <div class="payment-section">
+                                <h4>💳 Fast Payment Link</h4>
+                                <p style="font-size:11px; margin-bottom:8px; color:var(--text-secondary);">Scan hero UPI or pay ₹${order.price} directly</p>
+                                <input type="text" id="pay_utr_${id}" placeholder="Enter Payment UTR ID" style="padding:6px; font-size:12px; background:black; color:white; border:1px solid #444; width:100%; border-radius:4px; margin-bottom:8px;">
+                                <button class="action-btn btn-pay" style="margin:0; width:100%; padding:6px;" onclick="clientSubmitPayment('${id}')">Confirm Payment</button>
+                            </div>
+                        ` : ''}
+
+                        ${order.status === 'ready_for_delivery' ? `
+                            <div class="order-detail" style="color:var(--neon-cyan);">📍 Target GPS: ${order.location}</div>
+                        ` : ''}
+                    </div>
+                `;
+
+                if (order.status === 'pending') {
+                    pendingList.innerHTML += cardHTML; counts.pending++;
+                } else if (order.status === 'price_given') {
+                    paymentList.innerHTML += cardHTML; counts.price_given++;
+                } else if (order.status === 'payment_submitted') {
+                    verificationList.innerHTML += cardHTML; counts.payment_submitted++;
+                } else if (order.status === 'ready_for_delivery') {
+                    readyList.innerHTML += cardHTML; counts.ready_for_delivery++;
+                } else if (order.status === 'delivered') {
+                    deliveredList.innerHTML += cardHTML; counts.delivered++;
+                }
+            }
+
+            if(counts.pending === 0) pendingList.innerHTML = '<p style="color:#9ca3af; font-size:13px;">No orders</p>';
+            if(counts.price_given === 0) paymentList.innerHTML = '<p style="color:#9ca3af; font-size:13px;">No orders</p>';
+            if(counts.payment_submitted === 0) verificationList.innerHTML = '<p style="color:#9ca3af; font-size:13px;">No orders</p>';
+            if(counts.ready_for_delivery === 0) readyList.innerHTML = '<p style="color:#9ca3af; font-size:13px;">No orders</p>';
+            if(counts.delivered === 0) deliveredList.innerHTML = '<p style="color:#9ca3af; font-size:13px;">No orders</p>';
+
+            // Refresh dashboards dynamically if elements are visible
+            refreshShopkeeperDesk();
+            refreshDeliveryDashboard();
+        });
+
+        // Client Side Payment Processing
+        function clientSubmitPayment(orderId) {
+            const utrVal = document.getElementById(`pay_utr_${id = orderId}`).value.trim();
+            if (!utrVal) {
+                alert("Please add UTR number after money transfer.");
+                return;
+            }
+            database.ref(`orders/${orderId}`).update({
+                utr: utrVal,
+                status: 'payment_submitted'
+            }).then(() => alert("Payment sent for verification!"));
+        }
+
+        // 11. Shopkeeper Actions & Workspace
+        function onShopkeeperStoreSelected() {
+            const select = document.getElementById('shopkeeperStoreSelect');
+            const section = document.getElementById('shopkeeperOrdersSection');
+            const title = document.getElementById('selectedStoreTitle');
+
+            if (!select.value) {
+                section.classList.add('hidden');
+                return;
+            }
+
+            section.classList.remove('hidden');
+            title.innerText = `📦 Active Requests: ${allStores[select.value].name}`;
+            refreshShopkeeperDesk();
+        }
+
+        function refreshShopkeeperDesk() {
+            const storeId = document.getElementById('shopkeeperStoreSelect').value;
+            const container = document.getElementById('shopkeeperOrdersList');
+            if (!storeId || !container) return;
+
+            database.ref('orders').once('value', (snapshot) => {
+                const data = snapshot.val() || {};
+                container.innerHTML = '';
+                let matchFound = false;
+
+                for (let id in data) {
+                    const order = data[id];
+                    if (order.storeId !== storeId) continue;
+                    matchFound = true;
+
+                    container.innerHTML += `
+                        <div class="order-card" style="background: rgba(255,255,255,0.02);">
+                            <div style="display:flex; justify-content:space-between;">
+                                <span class="order-id">Order ID: ${id.substring(1,8).toUpperCase()}</span>
+                                <span class="order-status status-${order.status}">${order.status.toUpperCase()}</span>
+                            </div>
+                            <div class="order-detail"><strong>Client:</strong> ${order.customerName}</div>
+                            <div class="order-detail"><strong>Items Requested:</strong><br>${order.items.replace(/\n/g, '<br>')}</div>
+                            
+                            ${order.status === 'pending' ? `
+                                <div style="margin-top:10px;">
+                                    <input type="number" id="input_price_${id}" placeholder="Set Total Price (₹)" style="padding:8px; width:150px; background:black; color:white; border:1px solid var(--frosted-border); border-radius:6px; margin-right:10px;">
+                                    <button class="action-btn btn-send-bill" onclick="shopkeeperSendPrice('${id}')">Send Bill</button>
+                                </div>
+                            ` : ''}
+
+                            ${order.status === 'payment_submitted' ? `
+                                <div style="background:rgba(0,245,255,0.05); padding:10px; border-radius:8px; margin-top:10px;">
+                                    <p style="color:var(--neon-cyan); font-size:13px;"><strong>Submitted UTR:</strong> ${order.utr}</p>
+                                    <p style="font-size:13px;">Amount Owed: ₹${order.price}</p>
+                                    <button class="action-btn btn-approve" onclick="shopkeeperVerifyPayment('${id}')">Verify Money & Load Drone</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+                if (!matchFound) {
+                    container.innerHTML = '<p style="color:#9ca3af;">No workspace files or requests found for this store.</p>';
                 }
             });
-        });
-    };
-    </script>
+        }
 
-</body></html>
+        function shopkeeperSendPrice(orderId) {
+            const price = parseInt(document.getElementById(`input_price_${orderId}`).value);
+            if (isNaN(price) || price <= 0) {
+                alert("Please declare a real order valuation price.");
+                return;
+            }
+            database.ref(`orders/${orderId}`).update({
+                price: price,
+                status: 'price_given'
+            });
+        }
+
+        function shopkeeperVerifyPayment(orderId) {
+            database.ref(`orders/${orderId}`).update({
+                status: 'ready_for_delivery'
+            });
+        }
+
+        // 12. Drone Delivery Pilot Interface
+        let currentPilotId = null;
+        function loginDelivery() {
+            const id = document.getElementById('deliveryId').value.trim();
+            const pass = document.getElementById('deliveryPassword').value.trim();
+
+            if (id && pass === "drone123") { // Quick Simple Password gate
+                currentPilotId = id;
+                document.getElementById('deliveryLogin').classList.add('hidden');
+                document.getElementById('deliveryDashboard').classList.remove('hidden');
+                refreshDeliveryDashboard();
+            } else {
+                alert("Incorrect Delivery Pilot credentials. (Hint: pass is drone123)");
+            }
+        }
+
+        function logoutDelivery() {
+            currentPilotId = null;
+            document.getElementById('deliveryLogin').classList.remove('hidden');
+            document.getElementById('deliveryDashboard').classList.add('hidden');
+        }
+
+        function refreshDeliveryDashboard() {
+            const container = document.getElementById('deliveryOrdersList');
+            if (!currentPilotId || !container) return;
+
+            database.ref('orders').once('value', (snapshot) => {
+                const data = snapshot.val() || {};
+                container.innerHTML = '';
+                let routesExist = false;
+
+                for (let id in data) {
+                    const order = data[id];
+                    if (order.status !== 'ready_for_delivery') continue;
+                    routesExist = true;
+
+                    container.innerHTML += `
+                        <div class="order-card" style="border-left: 4px solid var(--neon-cyan);">
+                            <div class="order-id">🚀 READY FOR LAUNCH</div>
+                            <div class="order-detail"><strong>From Hub:</strong> ${order.storeName}</div>
+                            <div class="order-detail"><strong>Drop Point:</strong> ${order.customerName}</div>
+                            <div class="order-detail"><strong>Coordinates:</strong> ${order.location}</div>
+                            <div style="display:flex; gap:10px;">
+                                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(order.location)}" target="_blank" class="location-btn">🗺️ Navigate Mission</a>
+                                <button class="action-btn btn-confirm-delivery" onclick="pilotMarkDelivered('${id}')">Mark Delivered</button>
+                            </div>
+                        </div>
+                    `;
+                }
+                if (!routesExist) {
+                    container.innerHTML = '<p style="color:#9ca3af;">No pending drone flights. High-voltage system clear.</p>';
+                }
+            });
+        }
+
+        function pilotMarkDelivered(orderId) {
+            database.ref(`orders/${orderId}`).update({
+                status: 'delivered'
+            });
+        }
+
+        // 13. Wall of Fame Live Sync
+        database.ref('investments').on('value', (snapshot) => {
+            const data = snapshot.val() || {};
+            const grid = document.getElementById('wallGrid');
+            grid.innerHTML = '';
+            let approvedCounter = 0;
+
+            for (let id in data) {
+                if (data[id].status !== 'approved') continue;
+                approvedCounter++;
+                grid.innerHTML += `
+                    <div class="glass-card supporter-card">
+                        <div class="supporter-name">👑 ${data[id].name}</div>
+                        <div class="supporter-amount">₹${parseInt(data[id].amount).toLocaleString('en-IN')}</div>
+                        <div class="supporter-note">"${data[id].note}"</div>
+                    </div>
+                `;
+            }
+            if (approvedCounter === 0) {
+                grid.innerHTML = '<p style="color: #9ca3af; text-align: center; grid-column: 1/-1;">Be the first to support!</p>';
+            }
+        });
+
+        // 14. Admin Logic (Audit Contributions)
+        function loginAdmin() {
+            const pass = document.getElementById('adminPassword').value;
+            if (pass === "ayush2026") { // Secure access token
+                document.getElementById('adminLoginArea').classList.add('hidden');
+                document.getElementById('adminDashboardArea').classList.remove('hidden');
+                loadAdminAuditPanel();
+            } else {
+                alert("Unauthorized Access!");
+            }
+        }
+
+        function loadAdminAuditPanel() {
+            const container = document.getElementById('adminInvestmentList');
+            database.ref('investments').on('value', (snapshot) => {
+                const data = snapshot.val() || {};
+                container.innerHTML = '';
+                let totalItems = false;
+
+                for (let id in data) {
+                    if (data[id].status === 'approved') continue;
+                    totalItems = true;
+                    container.innerHTML += `
+                        <div class="order-card" style="text-align:left;">
+                            <div><strong>Backer:</strong> ${data[id].name}</div>
+                            <div><strong>Sum:</strong> ₹${data[id].amount}</div>
+                            <div><strong>UTR ID:</strong> ${data[id].utr}</div>
+                            <div><strong>Message:</strong> ${data[id].note}</div>
+                            <button class="action-btn btn-approve" onclick="approveInvestment('${id}')">Verify Funds & Publish</button>
+                        </div>
+                    `;
+                }
+                if (!totalItems) {
+                    container.innerHTML = '<p style="color:#9ca3af; font-size:13px; margin-top:10px;">Audit Log Clear. No pending transactions.</p>';
+                }
+            });
+        }
+
+        function approveInvestment(id) {
+            database.ref(`investments/${id}`).update({ status: 'approved' })
+            .then(() => alert("Backer added to the Wall of Fame!"));
+        }
+    </script>
+</body>
+</html>
