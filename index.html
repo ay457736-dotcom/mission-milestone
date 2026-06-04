@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission Milestone - Smart Village Drone Delivery</title>
     
-    <!-- Fonts & Tailwind CSS Google Scripts Directly Linked (No broken local links) -->
+    <!-- Fonts & Tailwind CSS Google Scripts Directly Linked -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
@@ -171,26 +171,18 @@
         .order-card { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--frosted-border); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
         .order-id { font-family: 'Orbitron', sans-serif; font-size: 14px; color: var(--neon-cyan); margin-bottom: 8px; }
         
-        .order-status { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-top: 10px; }
-        .status-pending { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
-        .status-ready { background: rgba(0, 245, 255, 0.2); color: var(--neon-cyan); }
-        .status-delivered { background: rgba(0, 255, 136, 0.2); color: #00ff88; }
-
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; color: var(--text-secondary); margin-bottom: 8px; font-size: 14px; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--frosted-border); border-radius: 12px; color: white; font-family: 'Rajdhani', sans-serif; font-size: 16px; }
 
-        .login-box { max-width: 400px; margin: 0 auto; padding: 40px; }
+        .login-box { max-width: 400px; margin: 0 auto; padding: 30px; margin-bottom: 20px; }
         .login-submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--neon-cyan), var(--accent-purple)); border: none; border-radius: 12px; color: var(--bg-dark); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; }
         
         .qr-display { text-align: center; margin: 20px 0; }
         .qr-frame { display: inline-block; padding: 15px; background: white; border-radius: 15px; border: 3px solid var(--neon-cyan); }
-        .qr-frame img { width: 180px; height: 180px; }
+        .qr-frame img { width: 180px; height: 180px; object-fit: contain; display: block; }
 
         footer { text-align: center; padding: 40px 20px; background: var(--frosted-glass); border-top: 1px solid var(--frosted-border); margin-top: 80px; }
-        .footer-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; flex-wrap: wrap; }
-        .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
-        .founder-link { color: #fbbf24; font-weight: 600; }
         .credit { font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); font-size: 18px; margin-top: 10px; }
 
         .hidden { display: none !important; }
@@ -214,7 +206,7 @@
                 <a href="#dashboard" style="color:white; text-decoration:none; font-size:14px;">Dashboard</a>
                 <a href="#shopkeeperDesk" style="color:white; text-decoration:none; font-size:14px;">Shopkeeper</a>
                 <a href="#deliveryPortal" style="color:white; text-decoration:none; font-size:14px;">🚚 Delivery</a>
-                <button onclick="showAdminPanel()" style="background:none; border:none; color:#fbbf24; cursor:pointer; font-weight:bold;">👑 Admin</button>
+                <a href="#adminSection" style="color:#fbbf24; text-decoration:none; font-size:14px; font-weight:bold;">👑 Admin</a>
             </div>
         </div>
     </nav>
@@ -233,9 +225,6 @@
     <section class="section" id="stores">
         <h2 class="section-title">🏪 Local Stores</h2>
         <p class="section-subtitle">Order from your favorite neighborhood stores</p>
-        <div class="text-center hidden" id="adminStoreOption" style="margin-bottom:20px;">
-            <button class="btn btn-secondary" onclick="openAddStoreModal()">+ Add New Store</button>
-        </div>
         <div class="store-grid" id="storeGrid">
             <p class="text-gray-400 text-center" style="grid-column: 1/-1;">Loading active marketplace stores...</p>
         </div>
@@ -279,11 +268,69 @@
         </div>
     </section>
 
-    <!-- Delivery Portal -->
+    <!-- Delivery Portal with Security Login -->
     <section class="section" id="deliveryPortal">
         <h2 class="section-title">🚚 Drone Pilot / Delivery Portal</h2>
-        <div class="glass-card" style="max-width:500px; margin:0 auto; padding:30px;">
+        
+        <!-- Login Form for Pilot -->
+        <div class="glass-card login-box" id="pilotLoginBox">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 15px; text-align: center;">Pilot Authentication</h3>
+            <div class="form-group">
+                <label>Pilot ID</label>
+                <input type="text" id="pilotId" placeholder="Enter Pilot ID">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="pilotPass" placeholder="••••••••">
+            </div>
+            <button class="login-submit-btn" onclick="checkPilotLogin()">Login to Pilot Panel</button>
+        </div>
+
+        <!-- Hidden Main Pilot Panel -->
+        <div class="glass-card hidden" id="pilotMainPanel" style="max-width:500px; margin:0 auto; padding:30px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                <span style="color:#00ff88;">● Connected as Drone Pilot</span>
+                <button onclick="logoutPilot()" style="background:none; border:none; color:red; cursor:pointer;">Logout</button>
+            </div>
             <div id="deliveryOrdersList"></div>
+        </div>
+    </section>
+
+    <!-- Admin Section Control & Store Creation -->
+    <section class="section" id="adminSection">
+        <h2 class="section-title">👑 System Admin Terminal</h2>
+        
+        <!-- Admin Login Form -->
+        <div class="glass-card login-box" id="adminLoginBox">
+            <h3 style="color: #fbbf24; margin-bottom: 15px; text-align: center;">Root Authentication</h3>
+            <div class="form-group">
+                <label>Admin ID</label>
+                <input type="text" id="adminId" placeholder="Enter Admin UID">
+            </div>
+            <div class="form-group">
+                <label>Passkey</label>
+                <input type="password" id="adminPass" placeholder="••••••••">
+            </div>
+            <button class="login-submit-btn" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);" onclick="checkAdminLogin()">Unlock Node Control</button>
+        </div>
+
+        <!-- Hidden Main Admin Options -->
+        <div class="glass-card hidden" id="adminMainPanel" style="max-width:600px; margin:0 auto; padding:30px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+                <span style="color:#fbbf24; font-weight:bold;">👑 Node Admin Panel Active</span>
+                <button onclick="logoutAdmin()" style="background:none; border:none; color:red; cursor:pointer;">Lock Panel</button>
+            </div>
+            
+            <h3 style="color:var(--neon-cyan); margin-bottom:15px;">🏪 Deploy New Local Store Node</h3>
+            <div class="form-group">
+                <label>Store Business Name</label>
+                <input type="text" id="newStoreName" placeholder="e.g., Ayush General Store">
+            </div>
+            <div class="form-group">
+                <label>Business Category</label>
+                <input type="text" id="newStoreCategory" placeholder="Groceries, Medical, Electronics">
+            </div>
+            <button class="login-submit-btn" onclick="submitNewStore()">Deploy Live Node</button>
         </div>
     </section>
 
@@ -328,14 +375,16 @@
         </div>
     </div>
 
-    <!-- Join/Support Modal -->
+    <!-- Join/Support Modal with QR Image Integrated -->
     <div class="modal" id="joinModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('joinModal')">×</span>
             <h2 style="text-align: center;">🚀 Crowdfund the Project</h2>
             <div class="qr-display">
                 <div class="qr-frame">
-                    <div style="width:180px; height:180px; background:#ccc; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;">[ UPI QR IMAGE ]</div>
+                    <!-- Aapka dynamic original local image placeholder -->
+                    <img src="sh_upi.jpeg" alt="UPI QR Code" onerror="this.style.display='none'; document.getElementById('qrFallback').style.display='block';">
+                    <div id="qrFallback" style="display:none; width:180px; height:180px; background:#fff; color:#000; font-weight:bold; padding-top:70px;">Scan sh_upi.jpeg</div>
                 </div>
             </div>
             <div class="form-group">
@@ -350,27 +399,9 @@
         </div>
     </div>
 
-    <!-- Admin/Add Store Modal -->
-    <div class="modal" id="addStoreModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('addStoreModal')">×</span>
-            <h2>🏪 Deploy New Local Store Node</h2>
-            <br>
-            <div class="form-group">
-                <label>Store Business Name</label>
-                <input type="text" id="newStoreName" placeholder="e.g., Ayush General Store">
-            </div>
-            <div class="form-group">
-                <label>Business Category</label>
-                <input type="text" id="newStoreCategory" placeholder="Groceries, Medical, Electronics">
-            </div>
-            <button class="login-submit-btn" onclick="submitNewStore()">Deploy Live Node</button>
-        </div>
-    </div>
-
     <!-- ==================== REAL-TIME CORE JAVASCRIPT & DATABASE CONFIG ==================== -->
     <script>
-        // 1. YOUR FIREBASE DATABASE CONFIGURED CORREKTLY 
+        // Firebase Configuration URL 
         const firebaseConfig = {
             databaseURL: "https://mission-milestone-869ef-default-rtdb.firebaseio.com/"
         };
@@ -379,18 +410,44 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // Admin Node toggle logic
-        let isAdmin = false;
-        function showAdminPanel() {
-            isAdmin = !isAdmin;
-            document.getElementById('adminStoreOption').classList.toggle('hidden', !isAdmin);
-            alert(isAdmin ? "Admin view enabled! Now you can add stores." : "Admin view disabled.");
+        // Passwords & Auths Configurations
+        function checkPilotLogin() {
+            const id = document.getElementById('pilotId').value;
+            const pass = document.getElementById('pilotPass').value;
+            if(id === "pilot" && pass === "1234") {
+                document.getElementById('pilotLoginBox').classList.add('hidden');
+                document.getElementById('pilotMainPanel').classList.remove('hidden');
+            } else {
+                alert("Incorrect Pilot Credentials!");
+            }
+        }
+        function logoutPilot() {
+            document.getElementById('pilotId').value = "";
+            document.getElementById('pilotPass').value = "";
+            document.getElementById('pilotLoginBox').classList.remove('hidden');
+            document.getElementById('pilotMainPanel').classList.add('hidden');
+        }
+
+        function checkAdminLogin() {
+            const id = document.getElementById('adminId').value;
+            const pass = document.getElementById('adminPass').value;
+            if(id === "admin" && pass === "1234") {
+                document.getElementById('adminLoginBox').classList.add('hidden');
+                document.getElementById('adminMainPanel').classList.remove('hidden');
+            } else {
+                alert("Unauthorized Access Attempt!");
+            }
+        }
+        function logoutAdmin() {
+            document.getElementById('adminId').value = "";
+            document.getElementById('adminPass').value = "";
+            document.getElementById('adminLoginBox').classList.remove('hidden');
+            document.getElementById('adminMainPanel').classList.add('hidden');
         }
 
         // Modal triggers
         function openOrderModal() { document.getElementById('orderModal').classList.add('show'); }
         function openJoinModal() { document.getElementById('joinModal').classList.add('show'); }
-        function openAddStoreModal() { document.getElementById('addStoreModal').classList.add('show'); }
         function closeModal(id) { document.getElementById(id).classList.remove('show'); }
 
         // --- SUBMIT CODE TO FIREBASE DATABASE ---
@@ -419,11 +476,14 @@
         function submitNewStore() {
             const name = document.getElementById('newStoreName').value;
             const cat = document.getElementById('newStoreCategory').value;
-            if(!name || !cat) return alert("Fill store data!");
+            if(!name || !cat) return alert("Please fill store data!");
 
-            db.ref('stores').push().set({ name, category: cat }).then(() => {
+            db.ref('stores').push().set({ name: name, category: cat }).then(() => {
                 alert("New store registered dynamically!");
-                closeModal('addStoreModal');
+                document.getElementById('newStoreName').value = "";
+                document.getElementById('newStoreCategory').value = "";
+            }).catch(err => {
+                alert("Firebase Write Error: " + err.message);
             });
         }
 
@@ -456,7 +516,6 @@
 
             Object.keys(data).forEach(key => {
                 const s = data[key];
-                // Update Store Grid
                 grid.innerHTML += `
                     <div class="glass-card store-card">
                         <div class="store-logo">🏪</div>
@@ -464,7 +523,6 @@
                         <div class="store-category">${s.category}</div>
                     </div>
                 `;
-                // Append Select dropboxes
                 orderSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
                 shopSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
             });
@@ -502,17 +560,17 @@
                 if(o.status === 'assigned') aList.innerHTML += cardHtml;
                 if(o.status === 'delivered') dList.innerHTML += cardHtml;
 
-                // Load Action item inside drone/delivery pilot section
                 if(o.status === 'assigned') {
                     pilotList.innerHTML += `
                         <div class="order-card">
                             <div class="order-id">${o.id} - Target: ${o.location}</div>
-                            <button onclick="updateStatus('${key}', 'delivered')" style="background:#00ff88; padding:6px 12px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:10px;">⚡ Mark Delivered</button>
+                            <div style="font-size:14px; margin:5px 0;">Items: ${o.items}</div>
+                            <button onclick="updateStatus('${key}', 'delivered')" style="background:#00ff88; padding:8px 12px; border:none; border-radius:6px; font-weight:bold; color:black; cursor:pointer; margin-top:10px;">⚡ Mark Delivered</button>
                         </div>
                     `;
                 }
             });
-            loadShopkeeperOrders(); // Refresh shopkeeper screen context too
+            loadShopkeeperOrders();
         });
 
         function loadShopkeeperOrders() {
@@ -536,7 +594,7 @@
                                 <div class="order-card">
                                     <div class="order-id">${o.id} (${o.customer})</div>
                                     <div>Items: ${o.items}</div>
-                                    <button onclick="updateStatus('${key}', 'assigned')" style="background:var(--neon-cyan); padding:6px 12px; border:none; border-radius:6px; color:black; font-weight:bold; cursor:pointer; margin-top:10px;">🛸 Dispatch Drone</button>
+                                    <button onclick="updateStatus('${key}', 'assigned')" style="background:var(--neon-cyan); padding:8px 12px; border:none; border-radius:6px; color:black; font-weight:bold; cursor:pointer; margin-top:10px;">🛸 Dispatch Drone</button>
                                 </div>
                             `;
                         }
