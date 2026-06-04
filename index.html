@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mission Milestone - Smart Village Drone Delivery</title>
     
-    <!-- Fonts & Tailwind CSS Google Scripts Directly Linked (No broken local links) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Firebase SDK Links for Global Cloud Syncing -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
@@ -171,26 +169,17 @@
         .order-card { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--frosted-border); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
         .order-id { font-family: 'Orbitron', sans-serif; font-size: 14px; color: var(--neon-cyan); margin-bottom: 8px; }
         
-        .order-status { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-top: 10px; }
-        .status-pending { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
-        .status-ready { background: rgba(0, 245, 255, 0.2); color: var(--neon-cyan); }
-        .status-delivered { background: rgba(0, 255, 136, 0.2); color: #00ff88; }
-
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; color: var(--text-secondary); margin-bottom: 8px; font-size: 14px; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--frosted-border); border-radius: 12px; color: white; font-family: 'Rajdhani', sans-serif; font-size: 16px; }
 
-        .login-box { max-width: 400px; margin: 0 auto; padding: 40px; }
         .login-submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--neon-cyan), var(--accent-purple)); border: none; border-radius: 12px; color: var(--bg-dark); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; }
         
         .qr-display { text-align: center; margin: 20px 0; }
-        .qr-frame { display: inline-block; padding: 15px; background: white; border-radius: 15px; border: 3px solid var(--neon-cyan); }
-        .qr-frame img { width: 180px; height: 180px; }
+        .qr-frame { display: inline-block; padding: 15px; background: white; border-radius: 15px; border: 3px solid var(--neon-cyan); margin: 10px auto; }
+        .qr-frame img { width: 180px; height: 180px; object-fit: contain; display: block; }
 
         footer { text-align: center; padding: 40px 20px; background: var(--frosted-glass); border-top: 1px solid var(--frosted-border); margin-top: 80px; }
-        .footer-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; flex-wrap: wrap; }
-        .footer-link { color: var(--text-secondary); text-decoration: none; font-size: 14px; }
-        .founder-link { color: #fbbf24; font-weight: 600; }
         .credit { font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); font-size: 18px; margin-top: 10px; }
 
         .hidden { display: none !important; }
@@ -203,8 +192,7 @@
 
     <div class="bg-geometric"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card" style="border-radius: 0 0 20px 20px; background: rgba(10,10,15,0.8);">
+    <nav class="glass-card" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; border-radius: 0 0 20px 20px; background: rgba(10,10,15,0.85);">
         <div style="max-width:1400px; margin:0 auto; padding:15px 20px; display:flex; justify-content:space-between; align-items:center;">
             <div style="font-family:'Orbitron', sans-serif; color:var(--neon-cyan); font-weight:bold; font-size:20px;">
                 🚀 Mission Milestone
@@ -212,198 +200,220 @@
             <div style="display:flex; gap:20px; align-items:center;">
                 <a href="#stores" style="color:white; text-decoration:none; font-size:14px;">Stores</a>
                 <a href="#dashboard" style="color:white; text-decoration:none; font-size:14px;">Dashboard</a>
-                <a href="#shopkeeperDesk" style="color:white; text-decoration:none; font-size:14px;">Shopkeeper</a>
-                <a href="#deliveryPortal" style="color:white; text-decoration:none; font-size:14px;">🚚 Delivery</a>
-                <button onclick="showAdminPanel()" style="background:none; border:none; color:#fbbf24; cursor:pointer; font-weight:bold;">👑 Admin</button>
+                <a href="#shopkeeperDesk" style="color:white; text-decoration:none; font-size:14px;">Shopkeeper Desk</a>
+                <a href="#adminSection" style="color:#fbbf24; text-decoration:none; font-size:14px; font-weight:bold;">Admin Control</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Mission Milestone</h1>
-        <p class="subtitle">Smart Village Drone Delivery</p>
+        <p class="subtitle">Smart Village Drone Delivery Network</p>
         <div class="hero-buttons">
             <button class="btn btn-primary" onclick="openOrderModal()">📦 Place Order</button>
             <button class="btn btn-secondary" onclick="openJoinModal()">🚀 Join the Revolution</button>
         </div>
     </section>
 
-    <!-- Local Stores Section -->
     <section class="section" id="stores">
         <h2 class="section-title">🏪 Local Stores</h2>
-        <p class="section-subtitle">Order from your favorite neighborhood stores</p>
-        <div class="text-center hidden" id="adminStoreOption" style="margin-bottom:20px;">
-            <button class="btn btn-secondary" onclick="openAddStoreModal()">+ Add New Store</button>
-        </div>
+        <p class="section-subtitle">Real-time marketplace nodes active in the village</p>
         <div class="store-grid" id="storeGrid">
-            <p class="text-gray-400 text-center" style="grid-column: 1/-1;">Loading active marketplace stores...</p>
-        </div>
+            </div>
     </section>
 
-    <!-- Order Dashboard -->
     <section class="section" id="dashboard">
         <h2 class="section-title">📊 Real-Time Drone Order Dashboard</h2>
-        <p class="section-subtitle">Live order processing pipeline</p>
+        <p class="section-subtitle">Live delivery tracking status pipelines</p>
         
         <div class="order-dashboard">
             <div class="glass-card order-column">
                 <h3 class="column-title">⏳ New Orders</h3>
-                <div id="list-pending"><p class="text-gray-400 text-sm">No live orders</p></div>
+                <div id="list-pending"></div>
             </div>
             <div class="glass-card order-column">
                 <h3 class="column-title">🛸 Drone Assigned</h3>
-                <div id="list-assigned"><p class="text-gray-400 text-sm">No drone tasks</p></div>
+                <div id="list-assigned"></div>
             </div>
             <div class="glass-card order-column">
                 <h3 class="column-title">✅ Delivered</h3>
-                <div id="list-delivered"><p class="text-gray-400 text-sm">No historical data</p></div>
+                <div id="list-delivered"></div>
             </div>
         </div>
     </section>
 
-    <!-- Shopkeeper Desk -->
     <section class="section" id="shopkeeperDesk">
         <h2 class="section-title">🏪 Shopkeeper Orders Control</h2>
-        <div class="glass-card" style="max-width: 500px; margin: 0 auto; padding: 30px;">
+        <div class="glass-card" style="max-width: 600px; margin: 0 auto; padding: 30px;">
             <div class="form-group">
-                <label>Select Store to Manage</label>
+                <label>Select Your Registered Store</label>
                 <select id="shopkeeperStoreSelect" onchange="loadShopkeeperOrders()">
                     <option value="">-- Choose Store --</option>
                 </select>
             </div>
             <div id="shopOrdersBox" class="hidden">
-                <h3 style="color:var(--neon-cyan); margin:15px 0 10px 0;">Incoming Shop Orders</h3>
+                <h3 style="color:var(--neon-cyan); margin:15px 0 10px 0;">Incoming Pending Orders</h3>
                 <div id="shopkeeperOrdersList"></div>
             </div>
         </div>
     </section>
 
-    <!-- Delivery Portal -->
-    <section class="section" id="deliveryPortal">
-        <h2 class="section-title">🚚 Drone Pilot / Delivery Portal</h2>
-        <div class="glass-card" style="max-width:500px; margin:0 auto; padding:30px;">
-            <div id="deliveryOrdersList"></div>
+    <section class="section" id="adminSection">
+        <h2 class="section-title">👑 System Admin Terminal</h2>
+        <div class="glass-card" style="max-width:650px; margin:0 auto; padding:30px;">
+            <h3 style="color:#fbbf24; margin-bottom:20px;">🏪 Deploy & Register New Store</h3>
+            
+            <div class="form-group">
+                <label>Store Name</label>
+                <input type="text" id="newStoreName" placeholder="e.g., Verma General Store">
+            </div>
+            <div class="form-group">
+                <label>Business Category</label>
+                <input type="text" id="newStoreCategory" placeholder="e.g., Groceries, Medical, Electronics">
+            </div>
+            <div class="form-group">
+                <label>Dukandar UPI QR Image File Name</label>
+                <input type="text" id="newStoreQr" placeholder="e.g., shop1_qr.jpg, verma_upi.png">
+            </div>
+            <button class="login-submit-btn" onclick="submitNewStore()">Add Store into Firebase Node</button>
         </div>
     </section>
 
-    <!-- Supporters -->
     <section class="section" id="wallOfFame">
         <h2 class="section-title">🌟 Visionary Supporters</h2>
         <div class="wall-grid" id="wallGrid">
-            <p class="text-gray-400 text-center" style="grid-column: 1/-1;">Be the first contributor!</p>
-        </div>
+            </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>Smart Village Drone Delivery Network</p>
         <p class="credit">System Architecture engineered by Ayush</p>
     </footer>
 
-    <!-- ==================== ALL ACTIVE DYNAMIC MODALS ==================== -->
-
-    <!-- Order Modal -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('orderModal')">×</span>
-            <h2 style="text-align: center; margin-bottom: 25px;">📦 Secure Drone Order</h2>
+            <h2 style="text-align: center; margin-bottom: 25px; color: var(--neon-cyan);">📦 Secure Drone Order</h2>
+            
             <div class="form-group">
                 <label>Select Destination Vendor Store</label>
-                <select id="orderStoreSelect"></select>
+                <select id="orderStoreSelect" onchange="showSelectedStoreQr()"></select>
+            </div>
+            
+            <div id="storeQrPreviewContainer" class="hidden text-center">
+                <label style="color:#00ff88; font-weight: bold;">💳 Scan Shopkeeper UPI QR to Pay:</label>
+                <div class="qr-frame">
+                    <img id="storeQrPreviewImg" src="" alt="Vendor UPI QR">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Customer Name</label>
+                <input type="text" id="orderCustomerName" placeholder="Enter your full name">
             </div>
             <div class="form-group">
-                <label>Customer Registered Name</label>
-                <input type="text" id="orderCustomerName" placeholder="Enter Full Name">
+                <label>Village Coordinates / Address Landmark</label>
+                <input type="text" id="orderLocation" placeholder="Enter House Number or Landmark">
             </div>
             <div class="form-group">
-                <label>Village Coordinates / Location</label>
-                <input type="text" id="orderLocation" placeholder="Enter Location details">
-            </div>
-            <div class="form-group">
-                <label>Cart Items Details (Single or multiples)</label>
-                <textarea id="orderItems" rows="3" placeholder="Items List"></textarea>
+                <label>Cart Items Details</label>
+                <textarea id="orderItems" rows="3" placeholder="e.g., 2kg Rice, 1 packet Maggi..."></textarea>
             </div>
             <button class="login-submit-btn" onclick="submitOrder()">🚀 Launch Digital Order</button>
         </div>
     </div>
 
-    <!-- Join/Support Modal -->
     <div class="modal" id="joinModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('joinModal')">×</span>
-            <h2 style="text-align: center;">🚀 Crowdfund the Project</h2>
+            <h2 style="text-align: center; color: var(--neon-cyan); margin-bottom: 10px;">🚀 Join the Revolution</h2>
+            <p class="text-center text-gray-400" style="font-size:14px; margin-bottom:15px;">Support Ayush's Innovative Drone Project</p>
+            
             <div class="qr-display">
                 <div class="qr-frame">
-                    <div style="width:180px; height:180px; background:#ccc; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;">[ UPI QR IMAGE ]</div>
+                    <img src="sh_upi.jpeg" alt="Your UPI QR Code" onerror="this.src='https://via.placeholder.com/180?text=Scan+sh_upi.jpeg';">
                 </div>
+                <p style="color:#00ff88; font-size:14px; margin-top:5px; font-weight: bold;">Scan via UPI to Support</p>
             </div>
+
             <div class="form-group">
-                <label>Supporter Name</label>
-                <input type="text" id="investorName" placeholder="Name">
+                <label>Your Name</label>
+                <input type="text" id="investorName" placeholder="Enter Name">
             </div>
             <div class="form-group">
                 <label>Contribution Amount (₹)</label>
-                <input type="number" id="investorAmount" placeholder="Amount">
+                <input type="number" id="investorAmount" placeholder="Amount in INR">
             </div>
             <button class="login-submit-btn" onclick="submitSupport()">Register Contribution</button>
         </div>
     </div>
 
-    <!-- Admin/Add Store Modal -->
-    <div class="modal" id="addStoreModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('addStoreModal')">×</span>
-            <h2>🏪 Deploy New Local Store Node</h2>
-            <br>
-            <div class="form-group">
-                <label>Store Business Name</label>
-                <input type="text" id="newStoreName" placeholder="e.g., Ayush General Store">
-            </div>
-            <div class="form-group">
-                <label>Business Category</label>
-                <input type="text" id="newStoreCategory" placeholder="Groceries, Medical, Electronics">
-            </div>
-            <button class="login-submit-btn" onclick="submitNewStore()">Deploy Live Node</button>
-        </div>
-    </div>
-
-    <!-- ==================== REAL-TIME CORE JAVASCRIPT & DATABASE CONFIG ==================== -->
     <script>
-        // 1. YOUR FIREBASE DATABASE CONFIGURED CORREKTLY 
+        // Realtime Database Config Connection
         const firebaseConfig = {
             databaseURL: "https://mission-milestone-869ef-default-rtdb.firebaseio.com/"
         };
         
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // Admin Node toggle logic
-        let isAdmin = false;
-        function showAdminPanel() {
-            isAdmin = !isAdmin;
-            document.getElementById('adminStoreOption').classList.toggle('hidden', !isAdmin);
-            alert(isAdmin ? "Admin view enabled! Now you can add stores." : "Admin view disabled.");
-        }
+        let activeStoresList = {};
 
-        // Modal triggers
+        // Modals open/close helper control
         function openOrderModal() { document.getElementById('orderModal').classList.add('show'); }
         function openJoinModal() { document.getElementById('joinModal').classList.add('show'); }
-        function openAddStoreModal() { document.getElementById('addStoreModal').classList.add('show'); }
         function closeModal(id) { document.getElementById(id).classList.remove('show'); }
 
-        // --- SUBMIT CODE TO FIREBASE DATABASE ---
+        // Dynamic Display: Shows shopkeeper QR code instantly upon selector change
+        function showSelectedStoreQr() {
+            const selectedStoreName = document.getElementById('orderStoreSelect').value;
+            const container = document.getElementById('storeQrPreviewContainer');
+            const imgElement = document.getElementById('storeQrPreviewImg');
+
+            if (!selectedStoreName || !activeStoresList[selectedStoreName]) {
+                container.classList.add('hidden');
+                return;
+            }
+
+            const qrFile = activeStoresList[selectedStoreName].qrCode || "";
+            if (qrFile.trim() !== "") {
+                imgElement.src = qrFile;
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        // Admin functionality to add dynamic local stores
+        function submitNewStore() {
+            const name = document.getElementById('newStoreName').value.trim();
+            const cat = document.getElementById('newStoreCategory').value.trim();
+            const qr = document.getElementById('newStoreQr').value.trim();
+
+            if(!name || !cat) return alert("Please fill Store Name and Category fields!");
+
+            db.ref('stores').push().set({
+                name: name,
+                category: cat,
+                qrCode: qr || "sh_upi.jpeg" // uses sh_upi.jpeg as default if left blank
+            }).then(() => {
+                alert(`🏪 Store "${name}" has been registered successfully in Firebase!`);
+                document.getElementById('newStoreName').value = "";
+                document.getElementById('newStoreCategory').value = "";
+                document.getElementById('newStoreQr').value = "";
+            }).catch(err => alert("Error writing to Database: " + err.message));
+        }
+
+        // Customers dispatching digital orders
         function submitOrder() {
             const store = document.getElementById('orderStoreSelect').value;
-            const name = document.getElementById('orderCustomerName').value;
-            const loc = document.getElementById('orderLocation').value;
-            const items = document.getElementById('orderItems').value;
+            const name = document.getElementById('orderCustomerName').value.trim();
+            const loc = document.getElementById('orderLocation').value.trim();
+            const items = document.getElementById('orderItems').value.trim();
 
-            if(!store || !name || !loc || !items) return alert("Fill all details!");
+            if(!store || !name || !loc || !items) return alert("Please fill out all ordering inputs!");
 
-            const newOrderRef = db.ref('orders').push();
-            newOrderRef.set({
+            db.ref('orders').push().set({
                 id: "ORD-" + Math.floor(1000 + Math.random() * 9000),
                 store: store,
                 customer: name,
@@ -411,34 +421,32 @@
                 items: items,
                 status: "pending"
             }).then(() => {
-                alert("Order synced to Firebase cloud successfully!");
+                alert("Order placed successfully!");
                 closeModal('orderModal');
+                document.getElementById('orderCustomerName').value = "";
+                document.getElementById('orderLocation').value = "";
+                document.getElementById('orderItems').value = "";
+                document.getElementById('storeQrPreviewContainer').classList.add('hidden');
             });
         }
 
-        function submitNewStore() {
-            const name = document.getElementById('newStoreName').value;
-            const cat = document.getElementById('newStoreCategory').value;
-            if(!name || !cat) return alert("Fill store data!");
-
-            db.ref('stores').push().set({ name, category: cat }).then(() => {
-                alert("New store registered dynamically!");
-                closeModal('addStoreModal');
-            });
-        }
-
+        // Handle Project Contribution Backers
         function submitSupport() {
-            const name = document.getElementById('investorName').value;
-            const amt = document.getElementById('investorAmount').value;
-            if(!name || !amt) return alert("Provide credentials!");
+            const name = document.getElementById('investorName').value.trim();
+            const amt = document.getElementById('investorAmount').value.trim();
+            if(!name || !amt) return alert("Please fill out your name and support amount!");
 
             db.ref('supporters').push().set({ name, amount: amt }).then(() => {
-                alert("Supporter note synchronized!");
+                alert("Thank you for your generous contribution support!");
                 closeModal('joinModal');
+                document.getElementById('investorName').value = "";
+                document.getElementById('investorAmount').value = "";
             });
         }
 
-        // --- REALTIME DATA STREAM READS FROM FIREBASE ---
+        // --- LIVE REALTIME READS FROM FIREBASE ---
+
+        // Sync and render marketplace store nodes
         db.ref('stores').on('value', snapshot => {
             const data = snapshot.val();
             const grid = document.getElementById('storeGrid');
@@ -448,15 +456,17 @@
             grid.innerHTML = "";
             orderSel.innerHTML = '<option value="">-- Choose Store --</option>';
             shopSel.innerHTML = '<option value="">-- Choose Store --</option>';
+            activeStoresList = {};
 
             if(!data) {
-                grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column:1/-1;">No Stores Live.</p>';
+                grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column:1/-1;">No live marketplace stores deployed yet.</p>';
                 return;
             }
 
             Object.keys(data).forEach(key => {
                 const s = data[key];
-                // Update Store Grid
+                activeStoresList[s.name] = s;
+
                 grid.innerHTML += `
                     <div class="glass-card store-card">
                         <div class="store-logo">🏪</div>
@@ -464,26 +474,23 @@
                         <div class="store-category">${s.category}</div>
                     </div>
                 `;
-                // Append Select dropboxes
                 orderSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
                 shopSel.innerHTML += `<option value="${s.name}">${s.name}</option>`;
             });
         });
 
-        // Track Real-time Order changes on Dashboard, pilot & shopkeeper panels
+        // Sync system operations pipeline 
         db.ref('orders').on('value', snapshot => {
             const orders = snapshot.val();
             const pList = document.getElementById('list-pending');
             const aList = document.getElementById('list-assigned');
             const dList = document.getElementById('list-delivered');
-            const pilotList = document.getElementById('deliveryOrdersList');
 
-            pList.innerHTML = ""; aList.innerHTML = ""; dList.innerHTML = ""; pilotList.innerHTML = "";
+            pList.innerHTML = ""; aList.innerHTML = ""; dList.innerHTML = "";
 
             if(!orders) {
-                const emptyMsg = '<p class="text-gray-400 text-sm">No orders</p>';
-                pList.innerHTML = emptyMsg; aList.innerHTML = emptyMsg; dList.innerHTML = emptyMsg;
-                pilotList.innerHTML = '<p class="text-gray-400 text-sm">No drone operations queued</p>';
+                const empty = '<p class="text-gray-400 text-sm text-center">Empty pipeline queue</p>';
+                pList.innerHTML = empty; aList.innerHTML = empty; dList.innerHTML = empty;
                 return;
             }
 
@@ -492,27 +499,19 @@
                 const cardHtml = `
                     <div class="order-card">
                         <div class="order-id">${o.id}</div>
-                        <div style="font-size:14px; margin-top:4px;"><b>To:</b> ${o.customer}</div>
+                        <div style="font-size:14px;"><b>To:</b> ${o.customer} (${o.location})</div>
                         <div style="font-size:13px; color:var(--text-secondary);"><b>Items:</b> ${o.items}</div>
                         <div style="font-size:13px; color:var(--text-secondary);"><b>Store:</b> ${o.store}</div>
+                        ${o.status === 'pending' ? `<button onclick="updateStatus('${key}', 'assigned')" style="background:var(--neon-cyan); padding:5px 10px; border:none; border-radius:6px; font-size:12px; margin-top:8px; cursor:pointer; color:black; font-weight:bold;">Assign Drone</button>` : ''}
+                        ${o.status === 'assigned' ? `<button onclick="updateStatus('${key}', 'delivered')" style="background:#00ff88; padding:5px 10px; border:none; border-radius:6px; font-size:12px; margin-top:8px; cursor:pointer; color:black; font-weight:bold;">Mark Delivered</button>` : ''}
                     </div>
                 `;
 
                 if(o.status === 'pending') pList.innerHTML += cardHtml;
                 if(o.status === 'assigned') aList.innerHTML += cardHtml;
                 if(o.status === 'delivered') dList.innerHTML += cardHtml;
-
-                // Load Action item inside drone/delivery pilot section
-                if(o.status === 'assigned') {
-                    pilotList.innerHTML += `
-                        <div class="order-card">
-                            <div class="order-id">${o.id} - Target: ${o.location}</div>
-                            <button onclick="updateStatus('${key}', 'delivered')" style="background:#00ff88; padding:6px 12px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:10px;">⚡ Mark Delivered</button>
-                        </div>
-                    `;
-                }
             });
-            loadShopkeeperOrders(); // Refresh shopkeeper screen context too
+            loadShopkeeperOrders();
         });
 
         function loadShopkeeperOrders() {
@@ -533,16 +532,15 @@
                         if(o.store === currentShop && o.status === 'pending') {
                             hasOrders = true;
                             list.innerHTML += `
-                                <div class="order-card">
-                                    <div class="order-id">${o.id} (${o.customer})</div>
+                                <div class="order-card" style="border-left: 3px solid var(--neon-cyan);">
+                                    <div class="order-id">${o.id} - ${o.customer}</div>
                                     <div>Items: ${o.items}</div>
-                                    <button onclick="updateStatus('${key}', 'assigned')" style="background:var(--neon-cyan); padding:6px 12px; border:none; border-radius:6px; color:black; font-weight:bold; cursor:pointer; margin-top:10px;">🛸 Dispatch Drone</button>
                                 </div>
                             `;
                         }
                     });
                 }
-                if(!hasOrders) list.innerHTML = '<p class="text-gray-400 text-sm">No new requests for your shop.</p>';
+                if(!hasOrders) list.innerHTML = '<p class="text-gray-400 text-sm">No current active requests pending.</p>';
             });
         }
 
@@ -550,18 +548,18 @@
             db.ref('orders/' + key).update({ status: status });
         }
 
-        // Live supporters layout update
+        // Realtime wall of backers sync
         db.ref('supporters').on('value', snapshot => {
             const data = snapshot.val();
             const grid = document.getElementById('wallGrid');
             grid.innerHTML = "";
-            if(!data) { grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column:1/-1;">No supporters registered.</p>'; return; }
+            if(!data) { grid.innerHTML = '<p class="text-gray-400 text-center" style="grid-column:1/-1;">No backers logged yet.</p>'; return; }
             Object.keys(data).forEach(key => {
                 const sup = data[key];
                 grid.innerHTML += `
-                    <div class="glass-card supporter-card">
-                        <div class="supporter-name">🌟 ${sup.name}</div>
-                        <div style="color:#00ff88; font-size:20px; font-weight:bold;">₹${parseInt(sup.amount).toLocaleString('en-IN')}</div>
+                    <div class="glass-card supporter-card" style="text-align:center;">
+                        <div class="supporter-name" style="font-family:'Orbitron'; color:var(--neon-cyan);">🌟 ${sup.name}</div>
+                        <div style="color:#00ff88; font-size:22px; font-weight:bold; margin-top:5px;">₹${parseInt(sup.amount).toLocaleString('en-IN')}</div>
                     </div>
                 `;
             });
