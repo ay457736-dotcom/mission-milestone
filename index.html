@@ -1,35 +1,42 @@
-Please rewrite the complete, production-ready "index.html" file for our project "Mission Milestone - Smart Village Drone Delivery (By Ayush)". 
+Act as an expert Full-Stack Developer and UI/UX Designer. Let's completely rebuild the "Mission Milestone" project from scratch with absolute perfection, incorporating all finalized business logic and strict privacy controls.
 
-CRITICAL REQUIREMENT: Completely remove all 'localStorage' data persistence and completely replace it with a fully live, realtime Google Firebase Firestore database. The application must instantly update the UI across multiple devices simultaneously when data changes.
+Design Theme: Matte charcoal grey background, tech-geometric overlays, glowing neon-cyan highlights, and clean translucent frosted-glass containers based on the premium styling. Use Tailwind CSS and strict localStorage syncing for all states so no data vanishes on refresh.
 
-1. FIREBASE SETUP & CREDENTIALS:
-   - Load the necessary Firebase Compat SDKs directly via standard CDN script tags inside the <head>:
-     https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js
-     https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js
-   - Initialize Firebase in your script background using these exact configuration keys:
-     const firebaseConfig = {
-       apiKey: "AIzaSyATzhq1HdHdPv4qWgWzUvs9wsohd8uFyq4",
-       authDomain: "mission-milestone-1f55c.firebaseapp.com",
-       projectId: "mission-milestone-1f55c",
-       storageBucket: "mission-milestone-1f55c.firebasestorage.app",
-       messagingSenderId: "764940662411",
-       appId: "1:764940662411:web:115ec9e815e7b09b9dc68e",
-       measurementId: "G-X7T28R3X9G"
-     };
-     firebase.initializeApp(firebaseConfig);
-     const db = firebase.firestore();
+CRITICAL SECURITY RULE: DO NOT write or display any usernames or passwords anywhere on the user interface (HTML text, placeholders, or help tooltips). Keep them strictly silent inside the background JavaScript code.
 
-2. REALTIME FIRESTORE IMPLEMENTATION:
-   - Map all data logic to three distinct Firestore collections: 'stores', 'orders', and 'investors'.
-   - Implement realtime listeners using `db.collection('stores').onSnapshot()` and `db.collection('orders').onSnapshot()`. When an admin adds a store, or an order moves stages, the layout must update instantly on ALL users' screens in realtime without any manual page refresh.
+Implement the following modular components cleanly into a single file:
 
-3. RE-IMPLEMENT AND PRESERVE THE COMPLETE APPLICATION FEATURE SET:
-   - THEME & UI: Matte dark charcoal background with neon-cyan accents. Title must read: "Mission Milestone - Smart Village Drone Delivery (By Ayush)".
-   - HERO SECTION: Include exactly ONE "Join the Revolution" button that opens a glassmorphic modal containing the founder QR image: <img src="IMG_1308.jpeg" alt="Founder QR" class="mx-auto rounded-lg border-2 border-cyan-500 shadow-lg">.
-   - ADMIN PORTAL: Accessed strictly via credentials (ID: "ayushadmin" / Pass: "founder2026") hidden safely in the background JS code (never show credentials on the UI). Unlocks the "+ Add Your Store" form and investor approval queues.
-   - STORE CREATION (QR CODE BASE64 FIX): When adding a store, use the FileReader API to convert the selected file input image into a permanent Base64 Data URL string, and save this string to the 'stores' document in Firestore. This ensures the unique merchant QR displays perfectly on any user's device.
-   - PUBLIC TRACKING DASHBOARD: Features the standard live 3-column workflow (Price Pending ⏳ / Active Deliveries / Completed Orders ✅).
-   - VENDOR DESK: Passwordless dropdown to select their store, view incoming orders, input "Total Bill Amount (₹)", and press a "Launch Drone" button to advance the status to "Ready for Delivery 🛸".
-   - DELIVERY BOY PORTAL: Accessed via credentials (ID: "driver01" / Pass: "drone123") in background script. Shows orders marked "Ready for Delivery 🛸" with fake/mock Google Maps coordinates and a "Confirm Delivery ✅" execution button.
+1. CENTRAL AUTHENTICATION & PRIVACY LAYER:
+   - Hardcode the backend roles inside the JavaScript structure:
+     const ADMIN_CONFIG = { id: "ayushadmin", pass: "founder2026" };
+     const DELIVERY_CONFIG = { id: "driver01", pass: "drone123" };
+   - Maintain active global session states: `currentRole = 'guest'` and `loggedInStoreId = null`.
+   - HARD RESET: Ensure the initial stores array starts completely empty. Delete all hardcoded mock templates (like Verma Kirana). Only load stores that are dynamically added to localStorage.
 
-Ensure the entire application is bundled cleanly into a single self-contained index.html file with robust error-handling for Firestore operations (.add, .doc().update). Do not skip or omit any feature or layout styling.
+2. SECURE ADMIN PANEL WITH IMAGE FILE UPLOAD:
+   - Create a dedicated "Admin Portal Login" form. Once logged in using ADMIN_CONFIG, unlock the "+ Add Your Store" form and the "Investor Approval Desk".
+   - STORE CREATION WITH CHOOSE FILE: Inside the store form, provide inputs for Store Name, Category, and a file input element (<input type="file" id="storeQrFile" accept="image/*">).
+   - In JavaScript, use the FileReader API to read the selected QR code image file and convert it into a permanent Base64 Data URL string. Save this entire Base64 string directly inside that store's object within localStorage.
+   - Once a store is created, its configuration (Name, Category, and QR Code) becomes permanently locked and cannot be edited or modified by public visitors.
+
+3. PASSWORDLESS ISOLATED SHOPKEEPER DESK:
+   - Create a clean "Shopkeeper Desk" area with a dropdown select menu: "Select Your Store to Manage Orders". No password is required for vendors.
+   - DATA ISOLATION: When a shopkeeper selects their specific store name from the dropdown, render a list displaying ONLY orders belonging to that specific store. No data leaking across vendors is permitted.
+
+4. COMPLETE CUSTOMER ORDERING & PAYMENT WORKFLOW:
+   - STEP 1 (ORDER PLACEMENT): A public user selects an approved store from the grid, inputs their Name, adds an auto-numbered Item List, and triggers HTML5 Geolocation tracking. The order is submitted with the status "Price Pending ⏳".
+   - STEP 2 (VENDOR INVOICING): The vendor opens their isolated "Shopkeeper Desk", views the item list, inputs the "Total Bill Amount (₹)", and clicks "Send Bill". Order status updates to "Awaiting Payment 💳".
+   - STEP 3 (CUSTOMER PAYMENT WITH PRE-SET QR): On the public tracking card, the customer views their active order. It dynamically displays the exact Bill Amount set by the vendor AND renders that specific vendor's pre-saved QR code image (using the saved Base64 string as the src). The customer scans the QR, pays, enters their "Transaction UTR ID / Screenshot Note", and clicks "Confirm Payment". Status shifts to "Payment Verification 🔍".
+   - STEP 4 (DISPATCH): The vendor sees this payment notification in their desk, verifies it, and clicks "Launch Drone", updating the status to "Ready for Delivery 🛸".
+
+5. DELIVERY BOY LOG IN SYSTEM:
+   - Provide a separate "Delivery Portal" form verified via DELIVERY_CONFIG.
+   - Once logged in, the driver views all orders across the platform marked "Ready for Delivery 🛸".
+   - Each card displays customer details, final price, a "View Live Location" button (launches Google Maps link using the customer's lat/lng coordinates), and a "Confirm Delivery ✅" button which sets status to "Delivered".
+
+6. "JOIN THE REVOLUTION" WALL OF FAME (STRICT APPROVAL):
+   - PUBLIC VIEW: Clicking the main button opens a gorgeous frosted-glass modal. It displays the text "Minimum Contribution: ₹10,000+" and displays the main static image "IMG_1308.jpeg" wrapped in a neon-cyan shadow box. Users submit Name, Amount, and UTR reference.
+   - ADMIN APPROVAL: Submitted entries are placed into a hidden queue. Inside the secure Admin Panel, the owner can view this queue and click "Approve". 
+   - Approved members are immediately published to a live "Our Visionary Supporters / Project Members" grid carousel visible on the main homepage. Unapproved entries must never appear.
+
+Assemble all components, layout structures, and Javascript event handlers smoothly into a single production-ready index.html file. Ensure it handles page reloads perfectly.
